@@ -2,14 +2,17 @@ var wasps;
 var schools;
 var play;
 (function(){
- 	var p = new parser();
- 	p.csv("Location of European Wasps Nests.csv", function(data){ wasps = data});
- 	p.csv("ACT - PLAYGROUNDS - V_NM_PLGR_IAMS15092009.csv", function(data){play = data});
-	p.csv("schools.csv", function(data){schools = data; processData();});
+
+ 	parse.csv("Location of European Wasps Nests.csv", function(data){ wasps = data});
+ 	parse.csv("ACT - PLAYGROUNDS - V_NM_PLGR_IAMS15092009.csv", function(data){play = data});
+	parse.csv("schools.csv", function(data){schools = data; processData();});
+	
+	
  })();
 
 function processData()
 {
+      console.log(wasps);
 	var mostWasps = wasps[2]
 		for(var i = 3; i < wasps.length; i++)
 		{

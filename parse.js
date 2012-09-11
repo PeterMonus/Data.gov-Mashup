@@ -22,3 +22,5 @@ parsecsv = function(data){
 	}
 	return dat;
 }
+
+var parse = new parser();
