@@ -6,11 +6,11 @@ parser.prototype.csv = function(csvName, callback)
 parsecsv = function(data){
 	var dat = [];
 	data = data.replace(/\n/g, "");
-	var blobLines = data.split("\r");
-	var headers = blobLines[0].toLowerCase().split(',');
-	for(var i = 1; i < blobLines.length; i++)
+	var lines = data.split("\r");
+	var headers = lines[0].toLowerCase().split(',');
+	for(var i = 1; i < lines.length; i++)
 	{
-		var lineArr = blobLines[i].split(',');
+		var lineArr = lines[i].split(',');
 		var line = {};
 		if(lineArr.length > 1)
 		{
