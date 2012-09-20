@@ -1,18 +1,41 @@
-var wasps;
+/*var wasps;
 var schools;
 var play;
+*/
 (function(){
 
- 	parse.csv("Location of European Wasps Nests.csv", function(data){ wasps = data});
- 	parse.csv("ACT - PLAYGROUNDS - V_NM_PLGR_IAMS15092009.csv", function(data){play = data});
-	parse.csv("schools.csv", function(data){schools = data; processData();});
+ 	parse.csv("CaltexSites_AU.CSV", function(data){petrolLocations(data)});
+// 	parse.csv("Location of European Wasps Nests.csv", function(data){ wasps = data});
+ //	parse.csv("ACT - PLAYGROUNDS - V_NM_PLGR_IAMS15092009.csv", function(data){play = data});
+//	parse.csv("schools.csv", function(data){schools = data; processData();});
 	
 	
  })();
 
-function processData()
+
+function petrolLocations(petrol)
 {
-      console.log(wasps);
+	console.log(petrol);
+	var holder = document.createElement("div");
+	holder.innerHTML = 'Locations of all caltex stores in australia:<br/><table id="list"><tr><th>store ID</th><th>Store Name</th><th>State</th><th>Street Address</th><th>Lat</th><th>Long</th></tr>';
+	document.body.appendChild(holder);
+	var list = document.getElementById("list");
+	for(var i = 0; i < petrol.length; i++)
+	{
+		current = petrol[i];
+		var row = document.createElement('tr');
+		row.innerHTML = '<td>'+i+'</td><td>'+current["brand"] + " " + current["suburb"] + "</td><td>" + current["address"]+ "</td><td>" + current["state"] + "</td><td>" + current["latitude"] +"</td><td>" + current["longitude"] + "</td>";
+		list.appendChild(row);
+	}
+}
+		
+
+
+
+
+/*function processData()
+{
+	console.log(petrol);
 	var mostWasps = wasps[2]
 		for(var i = 3; i < wasps.length; i++)
 		{
@@ -65,4 +88,4 @@ function processData()
 	var holder2 = document.createElement('div');
 	holder2.innerHTML ="The suburb with the most playgrounds is " + mostPlay["contract_unit"];
 	document.body.appendChild(holder2);
-}
+}*/

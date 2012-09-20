@@ -1,10 +1,11 @@
-var parser = function(){this.types=["csv"]};
+var parser = function(){this.types=["csv"];};
 parser.prototype.csv = function(csvName, callback)
 {	
 	$.get(csvName, function(data) {dat = parsecsv(data); callback(dat)}, "text");
 }
 parsecsv = function(data){
 	var dat = [];
+	data = data.replace(/\n/g, "");
 	var blobLines = data.split("\r");
 	var headers = blobLines[0].toLowerCase().split(',');
 	for(var i = 1; i < blobLines.length; i++)
