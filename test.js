@@ -1,5 +1,5 @@
 (function(){
- 	parse.csv("CaltexSites_AU.CSV", function(data){petrolLocations(data)});	
+ 	parse.csv("CaltexSites_AU.CSV", function(data){petrolLocations(data)},["nsw"]);
 })();
 
 function petrolLocations(petrol)
