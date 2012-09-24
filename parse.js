@@ -1,26 +1,7 @@
 var parser = function(){this.types=["csv"];};
 parser.prototype.csv = function(csvName, callback, filter)
 {	
-	var fReg;
-	console.log(filter);
-	if(!filter)
-	{
-		fReg = new RegExp("");
-	} else {
-		var fs = "";
-		console.log(fs);
-		for(var f = 0; f < filter.length; f++)
-		{
-			console.log(filter[f]);
-			if(f < filter.length - 1)
-			{
-				fs += filter[f] + ",|";
-			}
-			else { fs += filter[f] + ",";
-			}
-		}
-		fReg = new RegExp(fs, "i");
-	}
+	var fReg = createRegex(filter);
 
 	$.get(csvName, function(data) {dat = parsecsv(data, fReg, callback);}, "text");
 }
@@ -48,5 +29,20 @@ parsecsv = function(data, filter, callBack){
 	callBack(dat);
 }
 
+
+function createRegex(filter)
+{
+	if(!filter)
+	{
+		return new RegExp("");
+	} else {
+		var fs = "";
+		for(var f = 0; f < filter.length; f++)
+		{
+				fs += filter[f] + ",|";
+		}
+		return new RegExp(fs.substring(0, fs.length -1), "i");
+	}
+}
 
 var parse = new parser();
