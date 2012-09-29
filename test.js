@@ -1,5 +1,5 @@
 (function(){
- 	parse.csv("CaltexSites_AU.CSV", function(data){petrolLocations(data)},["nsw"]);
+ 	parse.csv("BP.CSV", function(data){petrolLocations(data)}, ["nsw"]);
 })();
 
 function petrolLocations(petrol)
@@ -13,7 +13,7 @@ function petrolLocations(petrol)
 	{
 		current = petrol[i];
 		var row = document.createElement('tr');
-		row.innerHTML = '<td>'+i+'</td><td>'+current["brand"] + " " + current["suburb"] + "</td><td>" + current["address"]+ "</td><td>" + current["state"] + "</td><td>" + current["latitude"] +"</td><td>" + current["longitude"] + "</td>";
+		row.innerHTML = '<td>'+i+'</td><td>'+current["name"] + " " + current["town"] + "</td><td>" + current["state"]+ "</td><td>" + current["street"] + "</td>";
 		list.appendChild(row);
 	}
 }

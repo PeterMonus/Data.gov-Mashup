@@ -1,9 +1,7 @@
-var parser = function(){this.types=["csv"];};
+var parser = function(){this.types = ["csv"];};
 parser.prototype.csv = function(csvName, callback, filter)
 {	
-	var fReg = createRegex(filter);
-
-	$.get(csvName, function(data) {dat = parsecsv(data, fReg, callback);}, "text");
+	$.get(csvName, function(data) {dat = parsecsv(data, regex(filter), callback);}, "text");
 }
 parsecsv = function(data, filter, callBack){
 	var dat = [];
@@ -30,7 +28,7 @@ parsecsv = function(data, filter, callBack){
 }
 
 
-function createRegex(filter)
+function regex(filter)
 {
 	if(!filter)
 	{
