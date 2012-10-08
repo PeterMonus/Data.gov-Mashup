@@ -1,11 +1,10 @@
-<<<<<<< HEAD
+
 (function(){
  	parse.csv("BP.CSV", function(data){petrolLocations(data)}, ["nsw"]);
 })();
 
 function petrolLocations(petrol)
 {
-	console.log(petrol);
 	var holder = document.createElement("div");
 	holder.innerHTML = 'Locations of all caltex stores in australia:<br/><table id="list"><tr><th>store ID</th><th>Store Name</th><th>State</th><th>Street Address</th><th>Lat</th><th>Long</th></tr>';
 	document.body.appendChild(holder);
@@ -18,7 +17,7 @@ function petrolLocations(petrol)
 		list.appendChild(row);
 	}
 }
-=======
+
 	var markers = [];
 	var stations = [];
 	var iterator = 0;
@@ -38,12 +37,10 @@ function initialize(petrol)
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"),
 	mapOptions);
-	//console.log("petrol " + petrol);
 	
 	for(var i = 0; i < petrol.length; i++)
 	{
 		current = petrol[i];
-		console.log(current["latitude"]);
 		stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
 	}
 	drop();
@@ -67,5 +64,3 @@ function addMarker() {
 	}));
 	iterator++;
 }
-
->>>>>>> Added gmaps, retailer markers
