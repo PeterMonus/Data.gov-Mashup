@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (function(){
  	parse.csv("BP.CSV", function(data){petrolLocations(data)}, ["nsw"]);
 })();
@@ -17,3 +18,54 @@ function petrolLocations(petrol)
 		list.appendChild(row);
 	}
 }
+=======
+	var markers = [];
+	var stations = [];
+	var iterator = 0;
+	var map;
+	
+(function(){
+ 	parse.csv("CaltexSites_AU.CSV", function(data){initialize(data)},[""]);
+})();
+		
+function initialize(petrol) 
+{
+	var mapOptions = 
+	{
+		center: new google.maps.LatLng(-23.7000, 133.8700),
+		zoom: 5,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	map = new google.maps.Map(document.getElementById("map_canvas"),
+	mapOptions);
+	//console.log("petrol " + petrol);
+	
+	for(var i = 0; i < petrol.length; i++)
+	{
+		current = petrol[i];
+		console.log(current["latitude"]);
+		stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
+	}
+	drop();
+}
+
+function drop() {
+	for (var i = 0; i < stations.length; i++) {
+		addMarker();		
+	}
+}
+
+var image = "images/marker_caltex.png";
+
+function addMarker() {
+	markers.push(new google.maps.Marker({
+		position: stations[iterator],
+		map: map,
+		draggable: false,
+		icon: image
+		//animation: google.maps.Animation.DROP
+	}));
+	iterator++;
+}
+
+>>>>>>> Added gmaps, retailer markers
