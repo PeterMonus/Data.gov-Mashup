@@ -22,7 +22,6 @@ function initialize(petrol)
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"),
 	mapOptions);
-	//console.log("petrol " + petrol);
 	
 	for(var i = 0; i < petrol.length; i++)
 	{
@@ -78,5 +77,3 @@ function distance(lat2, lon2)
 	var d = R * c; // Distance in km
 	return d;
 }
-
-
