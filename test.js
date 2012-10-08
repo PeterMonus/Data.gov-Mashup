@@ -1,39 +1,23 @@
-<<<<<<< HEAD
-(function(){
- 	parse.csv("BP.CSV", function(data){petrolLocations(data)}, ["nsw"]);
-})();
-
-function petrolLocations(petrol)
-{
-	console.log(petrol);
-	var holder = document.createElement("div");
-	holder.innerHTML = 'Locations of all caltex stores in australia:<br/><table id="list"><tr><th>store ID</th><th>Store Name</th><th>State</th><th>Street Address</th><th>Lat</th><th>Long</th></tr>';
-	document.body.appendChild(holder);
-	var list = document.getElementById("list");
-	for(var i = 0; i < petrol.length; i++)
-	{
-		current = petrol[i];
-		var row = document.createElement('tr');
-		row.innerHTML = '<td>'+i+'</td><td>'+current["name"] + " " + current["town"] + "</td><td>" + current["state"]+ "</td><td>" + current["street"] + "</td>";
-		list.appendChild(row);
-	}
-}
-=======
 	var markers = [];
 	var stations = [];
 	var iterator = 0;
 	var map;
+	var userLoc = {};
+	(function(){navigator.geolocation.getCurrentPosition(initLoc);})();
 	
-(function(){
+function initLoc(position){
+	userLoc["lat"] = position.coords.latitude;
+	userLoc["long"] = position.coords.longitude;
  	parse.csv("CaltexSites_AU.CSV", function(data){initialize(data)},[""]);
-})();
+}
 		
 function initialize(petrol) 
 {
+		console.log(userLoc);
 	var mapOptions = 
 	{
-		center: new google.maps.LatLng(-23.7000, 133.8700),
-		zoom: 5,
+		center: new google.maps.LatLng(userLoc["lat"], userLoc["long"]),
+		zoom: 9,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -43,8 +27,11 @@ function initialize(petrol)
 	for(var i = 0; i < petrol.length; i++)
 	{
 		current = petrol[i];
-		console.log(current["latitude"]);
+		//console.log(current["latitude"]);
+		if(distance(current["latitude"],current["longitude"]) < 100)
+		{
 		stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
+		}
 	}
 	drop();
 }
@@ -68,4 +55,28 @@ function addMarker() {
 	iterator++;
 }
 
->>>>>>> Added gmaps, retailer markers
+function distance(lat2, lon2)
+{
+	if (typeof(Number.prototype.toRad) === "undefined") {
+		  Number.prototype.toRad = function() {
+			      return this * Math.PI / 180;
+			        }
+	}
+
+	lat2 = lat2 * 1;
+	lon2 = lon2 * 1;
+	
+	var lat1 = userLoc["lat"];
+	var lon1 = userLoc["long"];
+	var R = 6371; // Radius of the earth in km
+	var dLat = (lat2-lat1).toRad();  // Javascript functions in radians
+	var dLon = (lon2-lon1).toRad(); 
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+		        Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+			        Math.sin(dLon/2) * Math.sin(dLon/2); 
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c; // Distance in km
+	return d;
+}
+
+
