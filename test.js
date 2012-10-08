@@ -1,9 +1,11 @@
 	var markers = [];
 	var stations = [];
+	var content = [];
 	var iterator = 0;
 	var map;
 	var userLoc = {};
 	(function(){navigator.geolocation.getCurrentPosition(initLoc);})();
+    var image = "";
 	
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
@@ -32,6 +34,8 @@ function initialize(petrol)
 		stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
 		}
 	}
+	
+	image = "images/marker_caltex.png";
 	drop();
 }
 
@@ -40,8 +44,6 @@ function drop() {
 		addMarker();		
 	}
 }
-
-var image = "images/marker_caltex.png";
 
 function addMarker() {
 	markers.push(new google.maps.Marker({
