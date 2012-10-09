@@ -19,7 +19,7 @@ function initialize(petrol)
 	var mapOptions = 
 	{
 		center: new google.maps.LatLng(userLoc["lat"], userLoc["long"]),
-		zoom: 9,
+		zoom: 14,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -29,14 +29,14 @@ function initialize(petrol)
 	{
 		current = petrol[i];
 		//console.log(current["latitude"]);
-		if(distance(current["latitude"],current["longitude"]) < 100)
+		if(distance(current["latitude"],current["longitude"]) < 20)
 		{
 		stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
 		}
 	}
 	
 	image = "images/marker_caltex.png";
-	drop();
+	window.setTimeout(function(){drop()}, 60);
 }
 
 function drop() {
@@ -50,8 +50,8 @@ function addMarker() {
 		position: stations[iterator],
 		map: map,
 		draggable: false,
-		icon: image
-		//animation: google.maps.Animation.DROP
+		icon: image,
+		animation: google.maps.Animation.DROP
 	}));
 	iterator++;
 }
