@@ -15,7 +15,6 @@ function initLoc(position){
 		
 function initialize(petrol) 
 {
-		console.log(userLoc);
 	var mapOptions = 
 	{
 		center: new google.maps.LatLng(userLoc["lat"], userLoc["long"]),
@@ -36,25 +35,29 @@ function initialize(petrol)
 	}
 	
 	image = "images/marker_caltex.png";
-	window.setTimeout(function(){drop()}, 60);
+	
+		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+			drop();
+		});
+
 }
 
 function drop() {
 	for (var i = 0; i < stations.length; i++) {
-		addMarker();		
+		markers.push(new google.maps.Marker({
+			position: stations[i],
+			map: map,
+			draggable: false,
+			icon: image,
+			animation: google.maps.Animation.DROP
+		}));
 	}
 }
 
-function addMarker() {
-	markers.push(new google.maps.Marker({
-		position: stations[iterator],
-		map: map,
-		draggable: false,
-		icon: image,
-		animation: google.maps.Animation.DROP
-	}));
-	iterator++;
-}
+/**********************
+  Function to calculate distance from current location from stackoverflow
+TODO: Find actual SO question URL
+**********************/
 
 function distance(lat2, lon2)
 {
