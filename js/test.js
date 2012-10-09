@@ -1,11 +1,10 @@
-	var markers = [];
 	var userLoc = {};
 	(function(){navigator.geolocation.getCurrentPosition(initLoc);})();
 	
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
 	userLoc["long"] = position.coords.longitude;
- 	parse.csv("CaltexSites_AU.CSV", function(data){initialize(data)},[""]);
+ 	parse.csv("csv/caltex.csv", function(data){initialize(data)},[""]);
 }
 		
 function initialize(petrol) 
@@ -23,9 +22,9 @@ function initialize(petrol)
 		}
 	}
 
-	var image = "images/marker_caltex.png";
+	var caltex = "images/marker_caltex.png";
 
 	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-			drop(stations, map, image);
+			drop(stations, map, caltex);
 			});
 }
