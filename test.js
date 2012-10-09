@@ -1,7 +1,5 @@
 	var markers = [];
-	var stations = [];
 	var content = [];
-	var iterator = 0;
 	var map;
 	var userLoc = {};
 	(function(){navigator.geolocation.getCurrentPosition(initLoc);})();
@@ -24,6 +22,7 @@ function initialize(petrol)
 	map = new google.maps.Map(document.getElementById("map_canvas"),
 	mapOptions);
 	
+	var stations = [];
 	for(var i = 0; i < petrol.length; i++)
 	{
 		current = petrol[i];
@@ -37,48 +36,8 @@ function initialize(petrol)
 	image = "images/marker_caltex.png";
 	
 		google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
-			drop();
+			drop(stations);
 		});
 
 }
 
-function drop() {
-	for (var i = 0; i < stations.length; i++) {
-		markers.push(new google.maps.Marker({
-			position: stations[i],
-			map: map,
-			draggable: false,
-			icon: image,
-			animation: google.maps.Animation.DROP
-		}));
-	}
-}
-
-/**********************
-  Function to calculate distance from current location from stackoverflow
-TODO: Find actual SO question URL
-**********************/
-
-function distance(lat2, lon2)
-{
-	if (typeof(Number.prototype.toRad) === "undefined") {
-		  Number.prototype.toRad = function() {
-			      return this * Math.PI / 180;
-			        }
-	}
-
-	lat2 = lat2 * 1;
-	lon2 = lon2 * 1;
-	
-	var lat1 = userLoc["lat"];
-	var lon1 = userLoc["long"];
-	var R = 6371; // Radius of the earth in km
-	var dLat = (lat2-lat1).toRad();  // Javascript functions in radians
-	var dLon = (lon2-lon1).toRad(); 
-	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-		        Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
-			        Math.sin(dLon/2) * Math.sin(dLon/2); 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c; // Distance in km
-	return d;
-}
