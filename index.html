@@ -21,11 +21,21 @@
 		  #ContentArea{width:1024px;}
 		  #dvInfoPanel{width:19%; border:solid 1px red;}
 		  .Heading{ color:#000000; font-weight:bold;font-family: Arial, Helvetica, sans-serif;}			  
-	
+		  #dvServicesTab{ float:left; cursor:pointer;color:#000000; font-weight:bold;font-family: Arial, Helvetica, sans-serif; font-size:12px;padding-left:5px; padding-left:5px;width:111px; height:24px;}
+		  #dvDirectionsTab{ float:left; margin-left:10px;cursor:pointer;color:#000000; font-weight:bold;font-family: Arial, Helvetica, sans-serif;font-size:12px;padding-left:5px; width:111px; height:24px;}
+		  .Selected{ background-image:url(images/tab_selected.png); background-repeat:no-repeat;  }
+		  .UnSelected{background-image:url(images/tab_unselected.png); background-repeat:no-repeat;}
+		  #dvFilters{clear:left;	}
+		  .Search{margin-top:2px; height:20px; padding-top:0px;  width:200px; font-family:Calibri, Arial Times New Roman, Tahoma; font-size:11px; border:solid 1px #C1c1c1;background: url(images/StreetName.png) no-repeat; background-position: 2px 2px;}
+		  #dvDirectionServices{ background-color:#FFFFFF;margin-left:10px; margin-top:40px;background-color:#FFFFFF; width:250px; height:180px; }
         </style>
         <script type="text/javascript"
           src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dOYB0zaLE&sensor=true">
         </script>
+		
+		
+		  
+		
     </head>
         
     <body>   
@@ -38,6 +48,12 @@
 						<img height="190" width="1024" src="images/banner_text.png" alt="Petrol Station Locator" border="0">
 					</div>
 					<div class="Heading" style="height:30px; margin-top:10px;">REFINE SEARCH</div>
+					
+					<div id="dvTabs">
+						<div id="dvServicesTab" class="Selected" onClick="SelectServicesTab();"><span style="position:relative; top:5px; left:5px;">Services</span></div>
+						<div id="dvDirectionsTab" class="UnSelected" onClick="SelectDirectionsTab();"><span style="position:relative; top:5px; left:5px;">Directions</span></div>
+					</div>
+					
 					<div id="dvFilters">
 				<div id="dvServices">
 					<div id="dvCompany" class="FloatLeft">
@@ -95,14 +111,44 @@
 						
 					</div>
 					
+					
+					
+					
+					
+					
+					
+					<div id="dvDirectionServices" style="display:none;"   class="FloatLeft">
+						<div class="Label">
+							Directions
+						</div>
+							
+							<div style="width:200px;margin-top:20px; padding-left:10px;">	
+								<input type="text" ID="txtSearchFrom" name="txtSearchFrom" Class="Search" style="width:200px;"
+					                onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
+					                onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
+							</div>			
+							<div style="width:200px; margin-top:10px; padding-left:10px;">	
+								<input type="text" ID="txtSearchTo"  name="txtSearchTo"  runat="server" AutoPostBack="false" Class="Search" style="width:200px;" 
+					                onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
+					                onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
+							</div>		
+						
+					</div>
+					
+					
+					
 					<div style="clear:both; height:10px; width:20px;">&nbsp;</div>
 					<div style="position:relative; left:350px;">
-						<img border="0" alt="Search" src="images/search_text.png" border="0" style="cursor:pointer;" />
+						<img border="0" alt="Search" src="images/search_text.png" style="cursor:pointer;" />
 					</div>
 					<div id="dvInfoPanel" class="FloatLeft" style="display:none;">LEFT SIDE INFO WILL GO HERE..... Update the content of this container</div>
 					<div id="map_canvas"  style="width:100%; height:100%;"></div>
 				</div>	
 				</div>
+				
+				
+				
+				
 				</td>
 				<td>&nbsp;</td>
 			</tr>
