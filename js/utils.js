@@ -26,3 +26,50 @@ function distance(lat2, lon2)
 	var d = R * c; // Distance in km
 	return d;
 }
+function IsEmpty(input) {
+        var strInput = input.toString().replace(" ", "");
+
+        if (strInput == "") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+function SelectDirectionsTab()
+{
+	$("#dvCompany").hide();
+	$("#dvFuelType").hide();
+	$("#dvStationServices").hide();
+	$("#dvDirectionServices").show();
+	$("#dvServicesTab").removeClass("Selected");
+	$("#dvServicesTab").removeClass("UnSelected");
+	$("#dvDirectionsTab").removeClass("Selected");
+	$("#dvDirectionsTab").removeClass("UnSelected");
+	
+	$("#dvServicesTab").addClass("UnSelected");
+	$("#dvDirectionsTab").addClass("Selected");
+
+
+}
+
+function SelectServicesTab()
+{
+	$("#dvDirectionServices").hide();
+	$("#dvCompany").show();
+	$("#dvFuelType").show();
+	$("#dvStationServices").show();
+	$("#dvServicesTab").removeClass("Selected");
+	$("#dvServicesTab").removeClass("UnSelected");
+	$("#dvDirectionsTab").removeClass("Selected");
+	$("#dvDirectionsTab").removeClass("UnSelected");
+	
+	
+	$("#dvServicesTab").addClass("Selected");
+	$("#dvDirectionsTab").addClass("UnSelected");
+
+
+
+	
+}
