@@ -37,39 +37,20 @@ function IsEmpty(input) {
         }
     }
 
-function SelectDirectionsTab()
+function SelectDirTab()
 {
-	$("#dvCompany").hide();
-	$("#dvFuelType").hide();
-	$("#dvStationServices").hide();
+	$("#dvServices").hide();
 	$("#dvDirectionServices").show();
-	$("#dvServicesTab").removeClass("Selected");
-	$("#dvServicesTab").removeClass("UnSelected");
-	$("#dvDirectionsTab").removeClass("Selected");
-	$("#dvDirectionsTab").removeClass("UnSelected");
-	
-	$("#dvServicesTab").addClass("UnSelected");
-	$("#dvDirectionsTab").addClass("Selected");
+	document.querySelectorAll("#dvServicesTab")[0].className = "tab";
+	document.querySelectorAll("#dvDirectionsTab")[0].className = "Selected";
 
 
 }
 
 function SelectServicesTab()
 {
+	$("#dvServices").show();
 	$("#dvDirectionServices").hide();
-	$("#dvCompany").show();
-	$("#dvFuelType").show();
-	$("#dvStationServices").show();
-	$("#dvServicesTab").removeClass("Selected");
-	$("#dvServicesTab").removeClass("UnSelected");
-	$("#dvDirectionsTab").removeClass("Selected");
-	$("#dvDirectionsTab").removeClass("UnSelected");
-	
-	
-	$("#dvServicesTab").addClass("Selected");
-	$("#dvDirectionsTab").addClass("UnSelected");
-
-
-
-	
+	document.querySelectorAll("#dvServicesTab")[0].className = "Selected";
+	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";	
 }

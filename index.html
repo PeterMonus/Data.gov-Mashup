@@ -1,159 +1,113 @@
 <!doctype HTML>
 <html>
-    <meta charset='utf-8'>
-    <head>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script src="js/parse.js"></script> 
-        <script src="js/utils.js"></script>
-	<script src="js/maps.js"></script>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <style type="text/css">
-          html { height: 100% }
-          body { height: 100%; margin: 0; padding: 0;  }
-          #map_canvas { height: 100%; width: 100% }
-		  .FloatLeft { float:left;}
-		  .FilterItem{clear:both;}
-		  .Label{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2BA64', endColorstr='#CCD46D'); background: -webkit-gradient(linear, left top, left bottom, from(#B2BA64), to(#CCD46D)); height:20px; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; padding-left:5px; padding-top:5px;}
-		  #dvServices{   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E3E3E3', endColorstr='#F8F8F8');  background:-webkit-gradient(linear, left top, left bottom, from(#E3E3E3), to(#F8F8F8)); width::100%; height:100%;    }
-		  #dvCompany { margin-left:10px; margin-top:40px;background-color:#FFFFFF; width:150px; height:180px; }
-		  #dvFuelType {background-color:#FFFFFF; margin-top:40px;width:200px;height:180px; }
-		  #dvStationServices { background-color:#FFFFFF; margin-top:40px;width:380px;height:180px; }
-		  #ContentArea{width:1024px;}
-		  #dvInfoPanel{width:19%; border:solid 1px red;}
-		  .Heading{ color:#000000; font-weight:bold;font-family: Arial, Helvetica, sans-serif;}			  
-		  #dvServicesTab{ float:left; cursor:pointer;color:#000000; font-weight:bold;font-family: Arial, Helvetica, sans-serif; font-size:12px;padding-left:5px; padding-left:5px;width:111px; height:24px;}
-		  #dvDirectionsTab{ float:left; margin-left:10px;cursor:pointer;color:#000000; font-weight:bold;font-family: Arial, Helvetica, sans-serif;font-size:12px;padding-left:5px; width:111px; height:24px;}
-		  .Selected{ background-image:url(images/tab_selected.png); background-repeat:no-repeat;  }
-		  .UnSelected{background-image:url(images/tab_unselected.png); background-repeat:no-repeat;}
-		  #dvFilters{clear:left;	}
-		  .Search{margin-top:2px; height:20px; padding-top:0px;  width:200px; font-family:Calibri, Arial Times New Roman, Tahoma; font-size:11px; border:solid 1px #C1c1c1;background: url(images/StreetName.png) no-repeat; background-position: 2px 2px;}
-		  #dvDirectionServices{ background-color:#FFFFFF;margin-left:10px; margin-top:40px;background-color:#FFFFFF; width:250px; height:180px; }
-        </style>
-        <script type="text/javascript"
-          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dOYB0zaLE&sensor=true">
-        </script>
-		
-		
-		  
-		
-    </head>
-        
-    <body>   
-        <script src="js/test.js"></script>
-		<table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
-			<tr>
-				<td>&nbsp;</td>
-				<td id="ContentArea">
-					<div id="dvBanner">
-						<img height="190" width="1024" src="images/banner_text.png" alt="Petrol Station Locator" border="0">
-					</div>
-					<div class="Heading" style="height:30px; margin-top:10px;">REFINE SEARCH</div>
-					
-					<div id="dvTabs">
-						<div id="dvServicesTab" class="Selected" onClick="SelectServicesTab();"><span style="position:relative; top:5px; left:5px;">Services</span></div>
-						<div id="dvDirectionsTab" class="UnSelected" onClick="SelectDirectionsTab();"><span style="position:relative; top:5px; left:5px;">Directions</span></div>
-					</div>
-					
-					<div id="dvFilters">
-				<div id="dvServices">
-					<div id="dvCompany" class="FloatLeft">
-						<div class="Label">
-							Company
-						</div>
-						<div class="FilterItem"><div class="FloatLeft"><input type="checkbox" id="chkAllCompanies" name="chkAllCompanies" /></div><div class="FloatLeft">All</div></div>
-						<div class="FilterItem"><div class="FloatLeft"><input type="checkbox" id="chkCaltex" name="chkCaltex" /></div><div  class="FloatLeft">Caltex</div></div>
-						<div class="FilterItem"><div class="FloatLeft"><input type="checkbox" id="chkAllBP" name="chkAllBP" /></div><div  class="FloatLeft">BP</div></div>
-						<div class="FilterItem"><div class="FloatLeft"><input type="checkbox" id="chkAllShell" name="chkAllShell" /></div  class="FloatLeft"><div>Shell</div></div>
-						<div class="FilterItem"><div class="FloatLeft"><input type="checkbox" id="chkAll711" name="chkAll711" /></div><div  class="FloatLeft">7/11</div></div>
-						</div>
-					
-					
-					<div id="dvFuelType" style="margin-left:30px;"  class="FloatLeft">
-						<div class="Label">
-							Feul Type
-						</div>
-						
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkUnLeaded" name="chkUnLeaded" /></div><div for="chkUnLeaded" class="FloatLeft">UnLeaded</div></div>
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkPremiumUnLeaded" name="chkPremiumUnLeaded" /></div><div  class="FloatLeft">Premium UnLeaded</div></div>
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkVortex9B" name="chkVortex9B" /></div><div  class="FloatLeft">Vortex 9B</div></div>
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkVortexDiesel" name="chkVortexDiesel" /></div><div  class="FloatLeft">Vortex Diesel</div></div>
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkEFlez" name="chkEFlez" /></div><div  class="FloatLeft">E-Flez</div></div>
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkStarCashSold" name="chkStarCashSold" /></div><div  class="FloatLeft">StarCash Sold</div></div>
-							<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkAutoLPG" name="chkAutoLPG" /></div><div  class="FloatLeft" >Auto LPG</div></div>
-						
-					</div>
-					
-					<div id="dvStationServices" style="margin-left:30px;"  class="FloatLeft">
-						<div class="Label">
-							Feul Type
-						</div>
-						
-							<div id="dvLeft" style="width:100px;" class="FloatLeft">	
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chk24Hour" name="chk24Hour" /></div><div>24 Hour</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkRestaurant" name="chkRestaurant" /></div><div>Restaurant</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkEFTPOS" name="chkEFTPOS" /></div><div>EFTPOS</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkCarWash" name="chkCarWash" /></div><div>Car Wash</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkFullService" name="chkFullService" /></div><div>Full Service</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkATM" name="chkATM" /></div><div>ATM</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkBBQGas" name="chkBBQGas" /></div><div>BBQ Gas</div></div>
-							</div>				
+<meta charset='utf-8'>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="js/parse.js"></script> 
+<script src="js/utils.js"></script>
+<script src="js/maps.js"></script>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="style.css"></link>
+<script type="text/javascript"
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dOYB0zaLE&sensor=true">
+</script>
+</head>
 
-							<div id="dvLeft" style="width:100px; margin-left:60px;" class="FloatLeft">	
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkStarCardAccepted" name="chkStarCardAccepted" /></div><div style="width:200px;">StarCard Accepted</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkWISH" name="chkWISH" /></div><div style="width:200px;">WISH gift card accepted</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkWorkshop" name="chkWorkshop" /></div><div>Workshop</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkToilet" name="chkToilet" /></div><div>Toilet</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkDisabledToilet" name="chkDisabledToilet" /></div><div style="width:200px;">Disabled Toilet</div></div>
-								<div class="FilterItem"><div class="FloatLeft"> <input type="checkbox" id="chkHonkForAssistance" name="chkHonkForAssistance" /></div><div style="width:200px;">Honk for Assistance</div></div>
-							</div>							
-							
-							
-						
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					<div id="dvDirectionServices" style="display:none;"   class="FloatLeft">
-						<div class="Label">
-							Directions
-						</div>
-							
-							<div style="width:200px;margin-top:20px; padding-left:10px;">	
-								<input type="text" ID="txtSearchFrom" name="txtSearchFrom" Class="Search" style="width:200px;"
-					                onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
-					                onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
-							</div>			
-							<div style="width:200px; margin-top:10px; padding-left:10px;">	
-								<input type="text" ID="txtSearchTo"  name="txtSearchTo"  runat="server" AutoPostBack="false" Class="Search" style="width:200px;" 
-					                onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
-					                onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
-							</div>		
-						
-					</div>
-					
-					
-					
-					<div style="clear:both; height:10px; width:20px;">&nbsp;</div>
-					<div style="position:relative; left:350px;">
-						<img border="0" alt="Search" src="images/search_text.png" style="cursor:pointer;" />
-					</div>
-					<div id="dvInfoPanel" class="FloatLeft" style="display:none;">LEFT SIDE INFO WILL GO HERE..... Update the content of this container</div>
-					<div id="map_canvas"  style="width:100%; height:100%;"></div>
-				</div>	
-				</div>
-				
-				
-				
-				
-				</td>
-				<td>&nbsp;</td>
-			</tr>
-		</table>
-        
-    </body>
+<body>   
+<div id="header">
+
+<img id="dvBanner" height="190" width="1024" src="images/banner_text.png" alt="Petrol Station Locator" border="0">
+<div class="Heading" style="height:30px; margin-top:10px;">REFINE SEARCH</div>
+
+<div id="dvTabs">
+<div id="dvServicesTab" class="tab" onclick="SelectServicesTab();">Services</div>
+<div id="dvDirectionsTab" class="tab" onclick="SelectDirTab();" >Directions</div>
+</div>
+
+<div id="dvFilters" style="z-index:9999">
+	<div id="dvServices" class="hidden filterBox">
+		<div id="dvCompany" class="col group">
+			<h3>Company</h3>
+			<div class="FilterItem"><label>All</label><input type="checkbox" id="chkAllCompanies" name="chkAllCompanies" /></div>
+			<div class="FilterItem"><label>Caltex</label><input type="checkbox" id="chkCaltex" name="chkCaltex" /></div>
+			<div class="FilterItem"><label>BP</label><input type="checkbox" id="chkAllBP" name="chkAllBP" /></div>
+			<div class="FilterItem"><label>Shell</label><input type="checkbox" id="chkAllShell" name="chkAllShell" /></div>
+			<div class="FilterItem"><label>7/11</label><input type="checkbox" id="chkAll711" name="chkAll711" /></div>
+		</div>
+
+
+		<div id="dvFuelType" class="col group">
+			<h3>Fuel Type</h3>
+			<div class="FilterItem"> <label>UnLeaded</label><input type="checkbox" id="chkUnLeaded" name="chkUnLeaded" /></div>
+			<div class="FilterItem"> <label>Premium UnLeaded</label><input type="checkbox" id="chkPremiumUnLeaded" name="chkPremiumUnLeaded" /></div>
+			<div class="FilterItem"> <label>Vortex 9B</label><input type="checkbox" id="chkVortex9B" name="chkVortex9B" /></div>
+			<div class="FilterItem"> <label>Vortex Diesel</label><input type="checkbox" id="chkVortexDiesel" name="chkVortexDiesel" /></div>
+			<div class="FilterItem"> <label>E-Flez</label><input type="checkbox" id="chkEFlez" name="chkEFlez" /></div>
+			<div class="FilterItem"> <label>StarCash Sold</label><input type="checkbox" id="chkStarCashSold" name="chkStarCashSold" /></div>
+			<div class="FilterItem"> <label>Auto LPG</label><input type="checkbox" id="chkAutoLPG" name="chkAutoLPG" /></div>
+
+		</div>
+
+		<div id="dvStationServices" class="col group">
+			<h3>Services</h3>
+			<div class="col">	
+			<div class="FilterItem"> <label>24 Hour</label><input type="checkbox" id="chk24Hour" name="chk24Hour" /></div>
+			<div class="FilterItem"> <label>Restaurant</label><input type="checkbox" id="chkRestaurant" name="chkRestaurant" /></div>
+			<div class="FilterItem"> <label>EFTPOS</label><input type="checkbox" id="chkEFTPOS" name="chkEFTPOS" /></div>
+			<div class="FilterItem"> <label>Car Wash</label><input type="checkbox" id="chkCarWash" name="chkCarWash" /></div>
+			<div class="FilterItem"> <label>Full Service</label><input type="checkbox" id="chkFullService" name="chkFullService" /></div>
+			<div class="FilterItem"> <label>ATM</label><input type="checkbox" id="chkATM" name="chkATM" /></div>
+			<div class="FilterItem"> <label>BBQ Gas</label><input type="checkbox" id="chkBBQGas" name="chkBBQGas" /></div>
+			</div>				
+
+			<div class="col">	
+			<div class="FilterItem"> <label>StarCard Accepted</label><input type="checkbox" id="chkStarCardAccepted" name="chkStarCardAccepted" /></div>
+			<div class="FilterItem"> <label>WISH gift card accepted</label><input type="checkbox" id="chkWISH" name="chkWISH" /></div>
+			<div class="FilterItem"> <label>Workshop</label><input type="checkbox" id="chkWorkshop" name="chkWorkshop" /></div>
+			<div class="FilterItem"> <label>Toilet</label><input type="checkbox" id="chkToilet" name="chkToilet" /></div>
+			<div class="FilterItem"> <label>Disabled Toilet</label><input type="checkbox" id="chkDisabledToilet" name="chkDisabledToilet" /></div>
+			<div class="FilterItem"> <label>Honk for Assistance</label><input type="checkbox" id="chkHonkForAssistance" name="chkHonkForAssistance" /></div>
+			</div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+
+
+	<div id="dvDirectionServices"   class="hidden filterBox">
+		<div class="Label">
+			Directions
+		</div>
+
+		<div style="width:200px;margin-top:20px; padding-left:10px;">	
+			<input type="text" ID="txtSearchFrom" name="txtSearchFrom" Class="Search" style="width:200px;"
+			onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
+			onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
+		</div>			
+		<div style="width:200px; margin-top:10px; padding-left:10px;">	
+			<input type="text" ID="txtSearchTo"  name="txtSearchTo"  runat="server" AutoPostBack="false" Class="Search" style="width:200px;" 
+			onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
+			onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
+		</div>		
+
+	</div>
+
+
+
+<img border="0" alt="Search" src="images/search_text.png" style="cursor:pointer;" />
+</div>
+</div>
+<div id="ContentArea">
+<div id="dvInfoPanel" class="FloatLeft" style="display:none;">LEFT SIDE INFO WILL GO HERE..... Update the content of this container</div>
+<div id="map_canvas"  style="width:100%; height:100%; z-index:1; position:absolute;"></div>
+</div>	
+
+
+
+
+
+
+
+<script src="js/test.js"></script>
+</body>
 </html>
 
