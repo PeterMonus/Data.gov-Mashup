@@ -30,19 +30,30 @@ function initialize(petrol)
 
 function SelectDirTab()
 {
+	if(document.querySelectorAll("#dvDirectionsTab")[0].className.indexOf("Selected") == -1)
+	{
 	$("#dvServices").slideUp();
 	$("#dvDirectionServices").slideDown();
 	document.querySelectorAll("#dvServicesTab")[0].className = "tab";
 	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab Selected";
+	} else {
+		$("#dvDirectionServices").slideUp();
+		document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";
+	}
+
 }
 
 function SelectServicesTab()
 {
-	
+	if(document.querySelectorAll("#dvServicesTab")[0].className.indexOf("Selected") == -1)
+	{
 	$("#dvServices").slideDown();
 	$("#dvDirectionServices").slideUp();
 	document.querySelectorAll("#dvServicesTab")[0].className = "tab Selected";
 	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";	
+	} else { clickSearch() }
+
+
 }
 
 function clickSearch()
