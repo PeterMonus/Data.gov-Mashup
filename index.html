@@ -16,7 +16,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dO
 <body>   
 <div id="header">
 
-<img id="dvBanner" height="190" width="1024" src="images/banner_text.png" alt="Petrol Station Locator" border="0">
+<img id="dvBanner"  src="images/banner_text.png" alt="Petrol Station Locator" border="0">
 <div class="Heading" style="height:30px; margin-top:10px;">REFINE SEARCH</div>
 
 <div id="dvTabs">
@@ -24,7 +24,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dO
 <div id="dvDirectionsTab" class="tab" onclick="SelectDirTab();" >Directions</div>
 </div>
 
-<div id="dvFilters" style="z-index:9999">
+<div id="dvFilters">
 	<div id="dvServices" class="hidden filterBox">
 		<div id="dvCompany" class="col group">
 			<h3>Company</h3>
@@ -70,6 +70,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dO
 			</div>
 		</div>
 		<div style="clear:both"></div>
+		<div class="button" id="search" onclick="clickSearch();">Search</div>
 	</div>
 
 
@@ -79,23 +80,18 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dO
 		</div>
 
 		<div style="width:200px;margin-top:20px; padding-left:10px;">	
-			<input type="text" ID="txtSearchFrom" name="txtSearchFrom" Class="Search" style="width:200px;"
-			onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
-			onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
+			<input type="text" ID="txtSearchFrom" name="txtSearchFrom" placeholder="From" class="searchText"/>
 		</div>			
 		<div style="width:200px; margin-top:10px; padding-left:10px;">	
-			<input type="text" ID="txtSearchTo"  name="txtSearchTo"  runat="server" AutoPostBack="false" Class="Search" style="width:200px;" 
-			onfocus="if (IsEmpty(this.value)) { $(this).removeClass('Search'); $(this).addClass('SearchRollOver');}"
-			onblur="if (IsEmpty(this.value)) { $(this).removeClass('SearchRollOver'); $(this).addClass('Search');}" />
+			<input type="text" ID="txtSearchTo"  name="txtSearchTo" placeholder="To" class="searchText" />
 		</div>		
 
 	</div>
-<img border="0" alt="Search" src="images/search_text.png" style="cursor:pointer;" />
 </div>
 </div>
 <div id="ContentArea">
-<div id="dvInfoPanel" class="FloatLeft" style="display:none;">LEFT SIDE INFO WILL GO HERE..... Update the content of this container</div>
-<div id="map_canvas"  style="width:100%; height:100%; z-index:1; position:absolute;"></div>
+	<div id="dvInfoPanel" class="FloatLeft" style="display:none;">LEFT SIDE INFO WILL GO HERE..... Update the content of this container</div>
+	<div id="map_canvas" style="position:absolute"></div>
 </div>	
 <script src="js/test.js"></script>
 </body>

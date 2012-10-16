@@ -1,6 +1,5 @@
 	var userLoc = {};
 	(function(){navigator.geolocation.getCurrentPosition(initLoc);})();
-	
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
 	userLoc["long"] = position.coords.longitude;
@@ -27,4 +26,27 @@ function initialize(petrol)
 	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
 			drop(stations, map, caltex);
 			});
+}
+
+function SelectDirTab()
+{
+	$("#dvServices").slideUp();
+	$("#dvDirectionServices").slideDown();
+	document.querySelectorAll("#dvServicesTab")[0].className = "tab";
+	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab Selected";
+}
+
+function SelectServicesTab()
+{
+	
+	$("#dvServices").slideDown();
+	$("#dvDirectionServices").slideUp();
+	document.querySelectorAll("#dvServicesTab")[0].className = "tab Selected";
+	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";	
+}
+
+function clickSearch()
+{
+		$("#dvServices").slideUp();
+		document.querySelectorAll("#dvServicesTab")[0].className = "tab";
 }

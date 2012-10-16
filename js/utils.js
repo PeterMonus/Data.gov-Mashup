@@ -27,20 +27,3 @@ function distance(lat2, lon2)
 	return d;
 }
 
-function SelectDirTab()
-{
-	$("#dvServices").slideUp();
-	$("#dvDirectionServices").slideDown();
-	document.querySelectorAll("#dvServicesTab")[0].className = "tab";
-	document.querySelectorAll("#dvDirectionsTab")[0].className = "Selected";
-
-
-}
-
-function SelectServicesTab()
-{
-	$("#dvServices").slideDown();
-	$("#dvDirectionServices").slideUp();
-	document.querySelectorAll("#dvServicesTab")[0].className = "Selected";
-	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";	
-}
