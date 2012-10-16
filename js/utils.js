@@ -26,21 +26,11 @@ function distance(lat2, lon2)
 	var d = R * c; // Distance in km
 	return d;
 }
-function IsEmpty(input) {
-        var strInput = input.toString().replace(" ", "");
-
-        if (strInput == "") {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 
 function SelectDirTab()
 {
-	$("#dvServices").hide();
-	$("#dvDirectionServices").show();
+	$("#dvServices").slideUp();
+	$("#dvDirectionServices").slideDown();
 	document.querySelectorAll("#dvServicesTab")[0].className = "tab";
 	document.querySelectorAll("#dvDirectionsTab")[0].className = "Selected";
 
@@ -49,8 +39,8 @@ function SelectDirTab()
 
 function SelectServicesTab()
 {
-	$("#dvServices").show();
-	$("#dvDirectionServices").hide();
+	$("#dvServices").slideDown();
+	$("#dvDirectionServices").slideUp();
 	document.querySelectorAll("#dvServicesTab")[0].className = "Selected";
 	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";	
 }
