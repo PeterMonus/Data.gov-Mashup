@@ -1,7 +1,7 @@
 /**********************
-  Function to calculate distance from current location from stackoverflow
-TODO: Find actual SO question URL
-**********************/
+ * Function to calculate distance from current location from stackoverflow
+ * See answer http://stackoverflow.com/a/27943/453554 for more information.
+ **********************/
 
 function distance(lat2, lon2)
 {
@@ -17,13 +17,13 @@ function distance(lat2, lon2)
 	var lat1 = userLoc["lat"];
 	var lon1 = userLoc["long"];
 	var R = 6371; // Radius of the earth in km
-	var dLat = (lat2-lat1).toRad();  // Javascript functions in radians
+	var dLat = (lat2-lat1).toRad();
 	var dLon = (lon2-lon1).toRad(); 
 	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
 		        Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
 			        Math.sin(dLon/2) * Math.sin(dLon/2); 
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c; // Distance in km
+	var d = R * c; //
 	return d;
 }
 

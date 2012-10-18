@@ -1,3 +1,7 @@
+/****************
+ * Initialise the map with the global user location coordinates
+ * TODO: Load the map seperately, move to user location on Geolocation accept
+ ****************/
 function initMap()
 {
 	var mapOptions = 
@@ -9,6 +13,10 @@ function initMap()
 	return new google.maps.Map(document.getElementById("map_canvas"),
 	mapOptions);
 }
+
+/*****************
+ * Drop the markers, return an array of them for use later.
+ ****************/
 
 function drop(stations, map, image) {
 	var markers = [];

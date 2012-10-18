@@ -1,18 +1,39 @@
 	var userLoc = {};
 	$(document).ready(function(){
-	 	navigator.geolocation.getCurrentPosition(initLoc);
+	 	navigator.geolocation.getCurrentPosition(initLoc); //Initialise GeoLocation
+
+		/********************
+		 * The following code initiallises tab click for *all* tabs
+		 * Even ones we might add later.
+		 ********************/
 		$(".tab").each(function(){
 			$(this).click(function(){
 				selectTab(this);
 				});
 			});
+
+		/****************
+		 * Initialise search button click
+		 ***************/
+		$("#search").click(function(){
+			clickSearch();
+			});
 	 });
+
+/**************************
+ * Callback function for loaded geolocation position
+ **************************/
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
 	userLoc["long"] = position.coords.longitude;
  	parse.csv("csv/caltex.csv", function(data){initialize(data)},[""]);
 }
 		
+
+/**************************
+ * Callback function for CSV parser
+ * TODO: Split out maps stuff to let the map load seperately.
+ *************************/
 function initialize(petrol) 
 {
 	var map = initMap();	
@@ -35,6 +56,9 @@ function initialize(petrol)
 			});
 }
 
+/*********************
+ * Shiny Tab Clicking Panel Sliding...stuff.
+ *******************/
 function selectTab(elem)
 {
 	if($(elem).hasClass("Selected"))
@@ -50,6 +74,10 @@ function selectTab(elem)
 	}
 }
 
+/********************
+ * Search button click.
+ * TODO: Add actual search logic
+ ********************/
 function clickSearch()
 {
 		$("#dvServices").slideUp();
