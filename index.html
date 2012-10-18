@@ -20,8 +20,8 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dO
 <div class="Heading" style="height:30px; margin-top:10px;">REFINE SEARCH</div>
 
 <div id="dvTabs">
-<div id="dvServicesTab" class="tab" onclick="SelectServicesTab();">Services</div>
-<div id="dvDirectionsTab" class="tab" onclick="SelectDirTab();" >Directions</div>
+<div id="dvServicesTab" class="tab" data-show="dvServices" data-hide="dvDirections">Services</div>
+<div id="dvDirectionsTab" class="tab" data-show="dvDirections" data-hide="dvServices">Directions</div>
 </div>
 
 <div id="dvFilters">
@@ -74,7 +74,7 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAF07dB50sZHe0MHV5ZCKYnL8dO
 	</div>
 
 
-	<div id="dvDirectionServices"   class="hidden filterBox">
+	<div id="dvDirections"   class="hidden filterBox">
 		<div class="Label">
 			Directions
 		</div>

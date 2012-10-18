@@ -1,5 +1,12 @@
 	var userLoc = {};
-	(function(){navigator.geolocation.getCurrentPosition(initLoc);})();
+	$(document).ready(function(){
+	 	navigator.geolocation.getCurrentPosition(initLoc);
+		$(".tab").each(function(){
+			$(this).click(function(){
+				selectTab(this);
+				});
+			});
+	 });
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
 	userLoc["long"] = position.coords.longitude;
@@ -28,32 +35,19 @@ function initialize(petrol)
 			});
 }
 
-function SelectDirTab()
+function selectTab(elem)
 {
-	if(document.querySelectorAll("#dvDirectionsTab")[0].className.indexOf("Selected") == -1)
+	if($(elem).hasClass("Selected"))
 	{
-	$("#dvServices").slideUp();
-	$("#dvDirectionServices").slideDown();
-	document.querySelectorAll("#dvServicesTab")[0].className = "tab";
-	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab Selected";
+		$("#" + $(elem).data("show")).slideUp();
+		$(elem).removeClass("Selected");
 	} else {
-		$("#dvDirectionServices").slideUp();
-		document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";
+		console.log(elem);
+		$(elem).addClass("Selected");
+		$("#" + $(elem).data("hide")).slideUp();
+		$("#" + $(elem).data("show")).slideDown();
+		$("#" + $(elem).data("hide") + "Tab").removeClass("Selected");
 	}
-
-}
-
-function SelectServicesTab()
-{
-	if(document.querySelectorAll("#dvServicesTab")[0].className.indexOf("Selected") == -1)
-	{
-	$("#dvServices").slideDown();
-	$("#dvDirectionServices").slideUp();
-	document.querySelectorAll("#dvServicesTab")[0].className = "tab Selected";
-	document.querySelectorAll("#dvDirectionsTab")[0].className = "tab";	
-	} else { clickSearch() }
-
-
 }
 
 function clickSearch()
