@@ -6,13 +6,19 @@ function initMap()
 {
 	var mapOptions = 
 	{
-		center: new google.maps.LatLng(userLoc["lat"], userLoc["long"]),
+center: new google.maps.LatLng( -35.237,149.085),
 		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	return new google.maps.Map(document.getElementById("map_canvas"),
 	mapOptions);
 }
+function centerMap()
+{
+	console.log(userLoc["lat"]+ "," + userLoc["long"]);
+	map.setCenter(new google.maps.LatLng(userLoc["lat"], userLoc["long"]));
+}
+
 
 /*****************
  * Drop the markers, return an array of them for use later.

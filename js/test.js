@@ -1,7 +1,8 @@
 	var userLoc = {};
+	var map;
 	$(document).ready(function(){
 	 	navigator.geolocation.getCurrentPosition(initLoc); //Initialise GeoLocation
-
+		map = initMap();//Load the map now. We'll move it later.
 		/********************
 		 * The following code initiallises tab click for *all* tabs
 		 * Even ones we might add later.
@@ -32,11 +33,9 @@ function initLoc(position){
 
 /**************************
  * Callback function for CSV parser
- * TODO: Split out maps stuff to let the map load seperately.
  *************************/
 function initialize(petrol) 
 {
-	var map = initMap();	
 
 	var stations = [];
 	for(var i = 0; i < petrol.length; i++)
@@ -51,9 +50,11 @@ function initialize(petrol)
 
 	var caltex = "images/marker_caltex.png";
 
-	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+	google.maps.event.addListenerOnce(map, 'center_changed', function(){
 			drop(stations, map, caltex);
 			});
+	centerMap();	
+
 }
 
 /*********************
