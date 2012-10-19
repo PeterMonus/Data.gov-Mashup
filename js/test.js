@@ -4,6 +4,7 @@
 	$(document).ready(function(){
 	 	navigator.geolocation.getCurrentPosition(initLoc); //Initialise GeoLocation
 		map = initMap();//Load the map now. We'll move it later.
+		
 		/********************
 		 * The following code initiallises tab click for *all* tabs
 		 * Even ones we might add later.
@@ -27,7 +28,8 @@
  **************************/
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
-	userLoc["long"] = position.coords.longitude;	
+	userLoc["long"] = position.coords.longitude;
+		
 	
 	parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")},[""]);	
 	parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")},[""]);
