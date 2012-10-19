@@ -32,7 +32,7 @@ function drop(stations, map, image) {
 			map: map,
 			draggable: false,
 			icon: image
-			//animation: google.maps.Animation.DROP
+			animation: google.maps.Animation.DROP
 		}));
 	}
 	return markers;

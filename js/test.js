@@ -47,10 +47,10 @@ function initialize(petrol, markerImage)
 	{
 		current = petrol[i];
 		//console.log(current["latitude"]);
-		//if(distance(current["latitude"],current["longitude"]) < 20)
-		//{
+		if(distance(current["latitude"],current["longitude"]) < 20)
+		{
 			stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
-		//}
+		}
 	}	
 
 	google.maps.event.addListenerOnce(map, 'center_changed', function(){
