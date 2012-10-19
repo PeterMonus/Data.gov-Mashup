@@ -31,8 +31,8 @@ function drop(stations, map, image) {
 			position: stations[i],
 			map: map,
 			draggable: false,
-			icon: image,
-			animation: google.maps.Animation.DROP
+			icon: image
+			//animation: google.maps.Animation.DROP
 		}));
 	}
 	return markers;

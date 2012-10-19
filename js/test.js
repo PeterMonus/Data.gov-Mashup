@@ -1,5 +1,6 @@
 	var userLoc = {};
 	var map;
+	
 	$(document).ready(function(){
 	 	navigator.geolocation.getCurrentPosition(initLoc); //Initialise GeoLocation
 		map = initMap();//Load the map now. We'll move it later.
@@ -26,15 +27,19 @@
  **************************/
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
-	userLoc["long"] = position.coords.longitude;
- 	parse.csv("csv/caltex.csv", function(data){initialize(data)},[""]);
+	userLoc["long"] = position.coords.longitude;	
+	
+	parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")},[""]);	
+	parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")},[""]);
+	parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )},[""]);
+	parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )},[""]);
 }
 		
 
 /**************************
  * Callback function for CSV parser
  *************************/
-function initialize(petrol) 
+function initialize(petrol, markerImage) 
 {
 
 	var stations = [];
@@ -42,16 +47,14 @@ function initialize(petrol)
 	{
 		current = petrol[i];
 		//console.log(current["latitude"]);
-		if(distance(current["latitude"],current["longitude"]) < 20)
-		{
+		//if(distance(current["latitude"],current["longitude"]) < 20)
+		//{
 			stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
-		}
-	}
-
-	var caltex = "images/marker_caltex.png";
+		//}
+	}	
 
 	google.maps.event.addListenerOnce(map, 'center_changed', function(){
-			drop(stations, map, caltex);
+			drop(stations, map, markerImage);
 			});
 	centerMap();	
 
