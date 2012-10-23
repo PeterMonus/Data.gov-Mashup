@@ -1,24 +1,131 @@
-          body { width: 960px; margin: 0 auto; left:auto; right: auto;  }
-          #map_canvas { height: 100%; width:960px;}
-		  .col{ float:left; margin-right: 20px;background:#fff; overflow:visible;}
-		  .group{min-height: 330px; padding-bottom:20px; overflow:visible;}
-		  h3{background: filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2BA64', endColorstr='#CCD46D'); background: linear-gradient(#B2BA64,#CCD46D); height:20px; color:#000000; font-family: verdana, Helvetica, sans-serif; font-size:14px; font-weight:bold; padding-right:0px; padding-top:5px; padding-left:5px; margin-left:10px; margin-top:5px; width:100% ;}
-		  label{width:90px; text-align:right; display:inline-block;}
-		  input{margin-right: 20px;}
-		  .FilterItem{margin-bottom:10px;}
-.filterBox{   background:filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E3E3E3', endColorstr='#F8F8F8');  background:linear-gradient(rgba(220, 220, 220,1), rgba(250, 250, 250, 0.6));padding: 20px; width: 650px; position:absolute;z-index:700;border-bottom-left-radius:5px; border-bottom-right-radius:5px;box-shadow:3px 3px 3px rgba(0,0,0,0.6);}
-		
-		 /* #dvCompany { width:150px; }
-		  #dvFuelType {width:200px; }
-		  #dvStationServices { width:380px;}*/
-		  #dvInfoPanel{width:19%; border:solid 1px red;}
-		  .Heading{ color:#000000; font-weight:bold;font-family: verdana, Helvetica, sans-serif;}			  
-		  .tab{background:linear-gradient(#929A44, #DCE47D);  border-top-left-radius:5px; border-top-right-radius:5px; width:120px; height:15px; padding:10px; text-align:center;  float:left; margin-right: 20px;font-size: 15px;z-index:500;}
-		  .Selected{ background: linear-gradient(rgba(160, 160, 160, 1), rgba(220, 220, 220, 1));z-index:999;}
-		  .tab:hover{cursor:pointer;}		  
-#dvFilters{clear:left;	}
-		  .Search{margin-top:2px; height:20px; padding-top:0px;  width:200px; font-family:Calibri, verdana Times New Roman, Tahoma; font-size:11px; border:solid 1px #C1c1c1;background: url(images/StreetName.png) no-repeat; background-position: 2px 2px;}
-		  .hidden{display:none;}
-		  .button{height: 20px; width: 50px;  background: filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2BA64', endColorstr='#CCD46D'); background: linear-gradient(#B2BA64,#CCD46D);padding:10px; border-radius:5px; cursor:pointer;}
-		  .button#search {margin:0 auto; margin-top:30px;}
-		  .searchText{background:#fff!important; height: 30px; padding-left: 5px; width: 250px; border-radius: 5px; color:#999; border:1px solid #999;}
+body { 
+	width: 960px; 
+	margin: 0 auto; 
+	left:auto; 
+	right: auto; 
+}
+
+#map_canvas {
+	height: 100%;
+	width:960px;
+}
+.col{ 
+	float:left; 
+	margin-right: 20px;
+	background:#fff;
+	overflow:visible;
+}
+.group{
+	min-height: 330px; 
+	padding-bottom: 20px; 
+	overflow:visible;
+}
+h3{
+	background: filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2BA64', endColorstr='#CCD46D'); 
+	background: -webkit-linear-gradient(#B2BA64,#CCD46D); 
+	background: linear-gradient(#B2BA64,#CCD46D); 
+	height:20px; 
+	color:#000000; 
+	font-family: verdana, Helvetica, sans-serif; 
+	font-size:14px; 
+	font-weight:bold; 
+	padding-right:0px; 
+	padding-top:5px; 
+	padding-left:5px; 
+	margin-left:10px; 
+	margin-top:5px; 
+	width:100% ;
+}
+label{
+	width:90px; 
+	text-align:right; 
+	display:inline-block;
+}
+input{margin-right: 20px;}
+.FilterItem{margin-bottom:10px;}
+
+.filterBox{   
+	background:filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E3E3E3', endColorstr='#F8F8F8');  
+	background:-webkit-linear-gradient(rgba(220, 220, 220,1), rgba(250, 250, 250, 0.6));
+	background:linear-gradient(rgba(220, 220, 220,1), rgba(250, 250, 250, 0.6));
+	padding: 20px; 
+	width: 650px; 
+	position:absolute;
+	z-index:700;
+	border-bottom-left-radius:5px; 
+	border-bottom-right-radius:5px;
+	box-shadow:3px 3px 3px rgba(0,0,0,0.6);
+}
+
+#dvInfoPanel{
+	width:19%; 
+	border:solid 1px red;
+}
+.Heading{ 
+	color:#000000; 
+	font-weight:bold;
+	font-family: verdana, Helvetica, sans-serif;
+}			  
+.tab{
+
+	background:filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#929A44', endColorstr='#DCE47D');  
+	background:-webkit-linear-gradient(#929A44, #DCE47D);
+	background:linear-gradient(#929A44, #DCE47D);
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	width:120px;
+	height:15px; 
+	padding:10px; 
+	text-align:center;  
+	float:left; 
+	margin-right: 20px;
+	font-size: 15px;
+	z-index:500;
+}
+
+.Selected{
+	background:filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A0A0A0', endColorstr='#DCDCDC');  
+	background: -webkit-linear-gradient(#a0a0a0, #DCDCDC);
+	background: linear-gradient(#a0a0a0, #DCDCDC);
+	z-index:999;
+}
+.tab:hover{cursor:pointer;}		  
+#dvFilters{clear:left;}
+.Search{
+	margin-top:2px; 
+	height:20px; 
+	padding-top:0px;  
+	width:200px; 
+	font-family:verdana, helvetica, sans-serif; 
+	font-size:11px; 
+	border:solid 1px #C1c1c1;
+	background: url(images/StreetName.png) no-repeat;
+	background-position: 2px 2px;
+}
+.hidden{display:none;}
+
+.button{
+	height: 20px; 
+	width: 50px;  
+	background: filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2BA64', endColorstr='#CCD46D'); 
+	background: -webkit-linear-gradient(#B2BA64,#CCD46D);
+	background: linear-gradient(#B2BA64,#CCD46D);
+	padding:10px; 
+	border-radius:5px; 
+	cursor:pointer;
+}
+
+.button#search {
+	margin:0 auto; 
+	margin-top:30px;
+}
+
+.searchText{
+	background:#fff!important;
+	height: 30px; 
+	padding-left: 5px; 
+	width: 250px; 
+	border-radius: 5px; 
+	color:#999; 
+	border:1px solid #999;
+}
