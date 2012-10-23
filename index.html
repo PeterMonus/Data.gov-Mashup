@@ -1,6 +1,7 @@
 <!doctype HTML>
 <html>
 <meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script src="js/parse.js"></script> 
@@ -27,10 +28,10 @@
 		<div id="dvCompany" class="col group">
 			<h3>Company</h3>
 			<div class="FilterItem"><label>All</label><input type="checkbox" id="chkAllCompanies" name="chkAllCompanies" checked="true" /></div>
-			<div class="FilterItem"><label>Caltex</label><input type="checkbox" id="chkCaltex" name="chkCaltex" /></div>
-			<div class="FilterItem"><label>BP</label><input type="checkbox" id="chkAllBP" name="chkAllBP" /></div>
-			<div class="FilterItem"><label>Shell</label><input type="checkbox" id="chkAllShell" name="chkAllShell" /></div>
-			<div class="FilterItem"><label>7/11</label><input type="checkbox" id="chkAll711" name="chkAll711" /></div>
+			<div class="FilterItem"><label>Caltex</label><input type="checkbox" id="chkCaltex" name="chkCaltex" class="comp" /></div>
+			<div class="FilterItem"><label>BP</label><input type="checkbox" id="chkBP" name="chkAllBP" class="comp" /></div>
+			<div class="FilterItem"><label>Shell</label><input type="checkbox" id="chkShell" name="chkAllShell" class="comp" /></div>
+			<div class="FilterItem"><label>Mobil</label><input type="checkbox" id="chkMobil" name="chkAllMobil" class="comp" /></div>
 		</div>
 
 
@@ -91,7 +92,7 @@
 	<div id="dvInfoPanel" class="FloatLeft" style="display:none;">LEFT SIDE INFO WILL GO HERE..... Update the content of this container</div>
 	<div id="map_canvas" style="position:absolute"></div>
 </div>	
-<script src="js/test.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
 

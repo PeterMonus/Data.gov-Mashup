@@ -1,4 +1,5 @@
 	var userLoc = {};
+	var pins;	
 	var map;
 	
 	$(document).ready(function(){
@@ -21,6 +22,30 @@
 		$("#search").click(function(){
 			clickSearch();
 			});
+
+		$("input").each(
+				function(){
+					$(this).click(
+						function(){
+							if(!($(this).is("#chkAllCompanies")) && $("#chkAllCompanies").is(":checked"))
+							{
+								$("#chkAllCompanies").prop("checked", "");
+							}	
+						});
+					})
+
+		$("#chkAllCompanies").click(
+				function(){
+					if(!($(this).is(":checked")))
+					{
+						$(".comp").each(function(){$(this).prop("checked", "on");});
+					} else {
+
+						$(".comp").each(function(){$(this).prop("checked", "");});
+						}
+				});
+
+
 	 });
 
 /**************************
@@ -29,14 +54,23 @@
 function initLoc(position){
 	userLoc["lat"] = position.coords.latitude;
 	userLoc["long"] = position.coords.longitude;
-		
-	
-	parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")},[""]);	
-	parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")},[""]);
-	parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )},[""]);
-	parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )},[""]);
+	initCSV();
 }
 		
+function initCSV()
+{	
+	var all = $("#chkAllCompanies").is(':checked');
+	var caltex = $("#chkCaltex").is(':checked');
+	var shell = $("#chkShell").is(':checked');
+	var BP = $("#chkBP").is(':checked');
+	var mobil = $("#chkMobil").is(':checked');
+	
+	if(all || caltex) parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")},[""]);	
+	if(all || shell) parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")},[""]);
+	if(all || BP) parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )},[""]);
+	if(all || mobil) parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )},[""]);
+}
+
 
 /**************************
  * Callback function for CSV parser
@@ -49,14 +83,14 @@ function initialize(petrol, markerImage)
 	{
 		current = petrol[i];
 		//console.log(current["latitude"]);
-		if(distance(current["latitude"],current["longitude"]) < 20)
+		if(distance(current["latitude"],current["longitude"]) < 10)
 		{
 			stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
 		}
 	}	
 
 	google.maps.event.addListenerOnce(map, 'center_changed', function(){
-			drop(stations, map, markerImage);
+			pins = drop(stations, map, markerImage);
 			});
 	centerMap();	
 
@@ -86,6 +120,10 @@ function selectTab(elem)
  ********************/
 function clickSearch()
 {
-		$("#dvServices").slideUp();
-		document.querySelectorAll("#dvServicesTab")[0].className = "tab";
+	if(pins)
+	{
+		clearPins(pins);
+		initCSV();
+	}
+	$("#dvServicesTab").click();
 }

@@ -15,7 +15,6 @@ center: new google.maps.LatLng( -35.237,149.085),
 }
 function centerMap()
 {
-	console.log(userLoc["lat"]+ "," + userLoc["long"]);
 	map.setCenter(new google.maps.LatLng(userLoc["lat"], userLoc["long"]));
 }
 
@@ -23,9 +22,8 @@ function centerMap()
 /*****************
  * Drop the markers, return an array of them for use later.
  ****************/
-
+var markers = [];
 function drop(stations, map, image) {
-	var markers = [];
 	for (var i = 0; i < stations.length; i++) {
 		markers.push(new google.maps.Marker({
 			position: stations[i],
@@ -35,5 +33,15 @@ function drop(stations, map, image) {
 			animation: google.maps.Animation.DROP
 		}));
 	}
+	console.log(markers);
 	return markers;
+}
+
+function clearPins(pins)
+{
+	for(var i = 0; i < pins.length; i++)
+	{
+		pins[i].setMap(null);
+	}
+	markers = [];
 }
