@@ -1,0 +1,32 @@
+NEW NAME	CALTEX		SHELL		BP		MOBIL
+
+FUELTYPES
+
+Regular		ULP		Unleaded	Unleaded	ULP	
+91 Octane	PULP		Unleaded 91			PULP
+95 Octane	VX95		Unleaded 95	Premium
+98 Octane	VX98		V Power		BPUltimate	Synergy
+E10		E10		Unleaded E10	E10		Unleaded E10
+LPG		LPG		LPG		Autogas		LPG
+Diesel		Diesel		Diesel		Diesel		DSL+
+Premium Diesel	Vortex Diesel	Diesel Extra	UltimateDeisel
+Diesel E10	Diesel E10
+BioDiesel	BioDiesel
+
+SERVICES
+
+Eftpos		Eftpos				Eftpos
+Workshop	Workshop
+24 Hours	OpenAllHours	24 hours			24 Hours
+Carwash		Carwash		Carwash		Carwash		C/Wash
+Toilets				Toilet		Toilets
+Disabled Toilet	Disabled Toilet	
+Hot Food					Resturant	Fast Food
+ATM		ATM				ATM
+BBQ Gas		BBQ Gas				LPGBottle
+Truckstop	Truckstop	Truck Parking	TruckStop	T/stop
+
+*Other services that were vendor specific were ommited
+
+
+All Yes/Nos have been changed to Y/N

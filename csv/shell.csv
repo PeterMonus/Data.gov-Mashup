@@ -1,9 +1,5 @@
-Site Name,Site Address,Town,State,Postcode,24 hours,Shell V Power,Shell Diesel,"Autogas 
-lpg",Shell  Unleaded  E10,Shell Low Aromatic,"Shell  Unleaded 
-95","Shell  Unleaded 
-91",Shell  Diesel  Extra,High  Speed  Diesel,Adblue At the  Pump,"Adblue 
-10L","Truck 
-parking",Car  Wash,Toilet,Latitude,Longitude
+Site Name,Site Address,Town,State,Postcode,24 Hours,98 Octane,Diesel,LPG,E10,Shell Low Aromatic,95 Octane,98 Octane,Premium Diesel,Diesel E10,Adblue At the  Pump,"Adblue 
+10L",Truckstop,Carwash,Toilets,Latitude,Longitude
 COLES EXPRESS BELCONNEN,CNR NETTLEFORD ST & LATHLAIN DR,BELCONNEN,ACT,2617,Y,Y,Y,N,Y,N,N,Y,N,N,N,N,N,Y,Y,-35.24295756,149.0645049
 COLES EXPRESS BELCONNEN TOWN CENTRE,CNR COHEN & JOSEPHSON ST,BELCONNEN,ACT,2617,Y,Y,N,Y,Y,N,N,Y,N,N,N,N,N,Y,Y,-35.23979205,149.0609706
 COLES EXPRESS BRADDON,CNR MORT ST & GIRRAHWEEN ST,BRADDON,ACT,2612,Y,Y,Y,Y,Y,N,N,Y,N,N,N,N,N,N,Y,-35.27048214,149.1318949
