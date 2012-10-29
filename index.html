@@ -37,35 +37,39 @@
 
 		<div id="dvFuelType" class="col group">
 			<h3>Fuel Type</h3>
-			<div class="FilterItem"> <label>UnLeaded</label><input type="checkbox" id="chkUnLeaded" name="chkUnLeaded" /></div>
-			<div class="FilterItem"> <label>Premium UnLeaded</label><input type="checkbox" id="chkPremiumUnLeaded" name="chkPremiumUnLeaded" /></div>
-			<div class="FilterItem"> <label>Vortex 9B</label><input type="checkbox" id="chkVortex9B" name="chkVortex9B" /></div>
-			<div class="FilterItem"> <label>Vortex Diesel</label><input type="checkbox" id="chkVortexDiesel" name="chkVortexDiesel" /></div>
-			<div class="FilterItem"> <label>E-Flez</label><input type="checkbox" id="chkEFlez" name="chkEFlez" /></div>
-			<div class="FilterItem"> <label>StarCash Sold</label><input type="checkbox" id="chkStarCashSold" name="chkStarCashSold" /></div>
-			<div class="FilterItem"> <label>Auto LPG</label><input type="checkbox" id="chkAutoLPG" name="chkAutoLPG" /></div>
+            <div class="col">
+            	<div class="FilterItem"> <label>All</label><input type="checkbox" id="chkAllFuel" name="chkAllFuel" checked="true" /></div>
+                <div class="FilterItem"> <label>Regular UnLeaded</label><input type="checkbox" id="chkUnLeaded" name="chkUnLeaded" /></div>
+                <div class="FilterItem"> <label>91 Octane</label><input type="checkbox" id="chk91Oct" name="chk91Oct" /></div>
+                <div class="FilterItem"> <label>95 Octane</label><input type="checkbox" id="chk95Oct" name="chk95Oct" /></div>
+                <div class="FilterItem"> <label>98 Octane</label><input type="checkbox" id="chk98Oct" name="chk98Oct" /></div>
+                <div class="FilterItem"> <label>E10</label><input type="checkbox" id="chkE10" name="chkE10" /></div>
+            </div>
+            <div class="col">
+                <div class="FilterItem"> <label>LPG</label><input type="checkbox" id="chkLPG" name="chkLPG" /></div>
+                <div class="FilterItem"> <label>Diesel</label><input type="checkbox" id="chkDiesel" name="chkDiesel" /></div>
+                <div class="FilterItem"> <label>Premium Diesel</label><input type="checkbox" id="chkPremiumDiesel" name="chkPremiumDiesel" /></div>
+                <div class="FilterItem"> <label>Diesel E10</label><input type="checkbox" id="chkDieselE10" name="chkDieselE10" /></div>
+                <div class="FilterItem"> <label>Biodiesel</label><input type="checkbox" id="chkBioDiesel" name="chkBioDiesel" /></div>
+            </div>
 
 		</div>
-
 		<div id="dvStationServices" class="col group">
 			<h3>Services</h3>
-			<div class="col">	
+			<div class="col">
+            	<div class="FilterItem"> <label>All</label><input type="checkbox" id="chkAllService" name="chkAllService" checked="true" /></div>
+            	<div class="FilterItem"> <label>EFTPOS</label><input type="checkbox" id="chkEFTPOS" name="chkEFTPOS" /></div>
+                <div class="FilterItem"> <label>ATM</label><input type="checkbox" id="chkATM" name="chkATM" /></div>
+                <div class="FilterItem"> <label>Workshop</label><input type="checkbox" id="chkWorkshop" name="chkWorkshop" /></div>	
 				<div class="FilterItem"> <label>24 Hour</label><input type="checkbox" id="chk24Hour" name="chk24Hour" /></div>
-				<div class="FilterItem"> <label>Restaurant</label><input type="checkbox" id="chkRestaurant" name="chkRestaurant" /></div>
-				<div class="FilterItem"> <label>EFTPOS</label><input type="checkbox" id="chkEFTPOS" name="chkEFTPOS" /></div>
-				<div class="FilterItem"> <label>Car Wash</label><input type="checkbox" id="chkCarWash" name="chkCarWash" /></div>
-				<div class="FilterItem"> <label>Full Service</label><input type="checkbox" id="chkFullService" name="chkFullService" /></div>
-				<div class="FilterItem"> <label>ATM</label><input type="checkbox" id="chkATM" name="chkATM" /></div>
-				<div class="FilterItem"> <label>BBQ Gas</label><input type="checkbox" id="chkBBQGas" name="chkBBQGas" /></div>
-			</div>				
-
-			<div class="col">	
-				<div class="FilterItem"> <label>StarCard Accepted</label><input type="checkbox" id="chkStarCardAccepted" name="chkStarCardAccepted" /></div>
-				<div class="FilterItem"> <label>WISH gift card accepted</label><input type="checkbox" id="chkWISH" name="chkWISH" /></div>
-				<div class="FilterItem"> <label>Workshop</label><input type="checkbox" id="chkWorkshop" name="chkWorkshop" /></div>
-				<div class="FilterItem"> <label>Toilet</label><input type="checkbox" id="chkToilet" name="chkToilet" /></div>
+                <div class="FilterItem"> <label>Car Wash</label><input type="checkbox" id="chkCarWash" name="chkCarWash" /></div>                				
+			</div>
+			<div class="col">
+            	<div class="FilterItem"> <label>Toilet</label><input type="checkbox" id="chkToilet" name="chkToilet" /></div>
 				<div class="FilterItem"> <label>Disabled Toilet</label><input type="checkbox" id="chkDisabledToilet" name="chkDisabledToilet" /></div>
-				<div class="FilterItem"> <label>Honk for Assistance</label><input type="checkbox" id="chkHonkForAssistance" name="chkHonkForAssistance" /></div>
+            	<div class="FilterItem"> <label>Restaurant</label><input type="checkbox" id="chkRestaurant" name="chkRestaurant" /></div>                
+				<div class="FilterItem"> <label>BBQ Gas</label><input type="checkbox" id="chkBBQGas" name="chkBBQGas" /></div>	
+				<div class="FilterItem"> <label>Truckstop</label><input type="checkbox" id="chkTruckstop" name="chkTruckstop" /></div>
 			</div>
 		</div>
 		<div style="clear:both"></div>
