@@ -65,10 +65,10 @@ function initCSV()
 	var BP = $("#chkBP").is(':checked');
 	var mobil = $("#chkMobil").is(':checked');
 	
-	if(all || caltex) parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")},[""]);	
-	if(all || shell) parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")},[""]);
-	if(all || BP) parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )},[""]);
-	if(all || mobil) parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )},[""]);
+	if(all || caltex) parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")});	
+	if(all || shell) parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")});
+	if(all || BP) parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )});
+	if(all || mobil) parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )});
 }
 
 

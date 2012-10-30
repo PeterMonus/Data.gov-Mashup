@@ -12,7 +12,7 @@ var parser = function(){this.types = ["csv"];};
  ****************/
 parser.prototype.csv = function(csvName, callback, filter)
 {	
-	$.get(csvName, function(data) {dat = parsecsv(data, regex(filter), callback);}, "text");
+	$.get(csvName, function(data) {dat = parsecsv(data, filter, callback);}, "text");
 }
 
 /***********************
@@ -21,10 +21,10 @@ parser.prototype.csv = function(csvName, callback, filter)
  ***********************/
 boolFilter = function(data, filter)
 {
-	var containsVal = false;
+	var containsVal = true;
 	for(var key in filter)
 	{
-		if((data[key].toLowerCase() == "y") == filter[key])
+		if(data[key] && (data[key].toLowerCase() == "y") == filter[key])
 		{
 			containsVal =  true;
 		} else { return false }
