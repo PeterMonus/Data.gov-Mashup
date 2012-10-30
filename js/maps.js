@@ -1,6 +1,5 @@
 /****************
  * Initialise the map with the global user location coordinates
- * TODO: Load the map seperately, move to user location on Geolocation accept
  ****************/
 function initMap()
 {
@@ -16,6 +15,7 @@ center: new google.maps.LatLng( -35.237,149.085),
 function centerMap()
 {
 	map.setCenter(new google.maps.LatLng(userLoc["lat"], userLoc["long"]));
+	
 }
 
 
@@ -26,14 +26,18 @@ var markers = [];
 function drop(stations, map, image) {
 	for (var i = 0; i < stations.length; i++) {
 		markers.push(new google.maps.Marker({
-			position: stations[i],
+			position: (stations[i])["location"],
+			title: (stations[i])["title"],
 			map: map,
 			draggable: false,
+			clickable: true,
 			icon: image,
 			animation: google.maps.Animation.DROP
 		}));
+
 	}
-	console.log(markers);
+
+	pinClicks(markers);
 	return markers;
 }
 

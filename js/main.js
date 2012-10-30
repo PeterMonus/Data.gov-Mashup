@@ -23,7 +23,7 @@
 			clickSearch();
 			});
 
-		$("input").each(
+		$(".comp").each(
 				function(){
 					$(this).click(
 						function(){
@@ -64,11 +64,35 @@ function initCSV()
 	var shell = $("#chkShell").is(':checked');
 	var BP = $("#chkBP").is(':checked');
 	var mobil = $("#chkMobil").is(':checked');
-	
-	if(all || caltex) parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")});	
-	if(all || shell) parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")});
-	if(all || BP) parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )});
-	if(all || mobil) parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )});
+
+	var filter = {};
+
+	if(!$("#chkAllFuel").is(":checked"))
+	{
+		$(".fuel").each( function(){
+				console.log($(this).prop("name"));
+				if($(this).is(":checked"))
+				{
+					filter[$(this).prop("name").toLowerCase()] = true;
+				}
+			});
+	}
+
+	if(!$("#chkService").is(":checked"))
+	{
+		$(".service").each( function(){
+				console.log($(this).prop("name"));
+				if($(this).is(":checked"))
+				{
+					filter[$(this).prop("name").toLowerCase()] = true;
+				}
+			});
+	}
+	console.log(filter);	
+	if(all || caltex) parse.csv("csv/caltex.csv", function(data){initialize(data, "images/marker_caltex.png")}, filter);	
+	if(all || shell) parse.csv("csv/shell.csv", function(data){initialize(data, "images/marker_shell.png")}, filter);
+	if(all || BP) parse.csv("csv/BP.csv", function(data){initialize(data, "images/marker_bp.png" )}, filter);
+	if(all || mobil) parse.csv("csv/mobil.csv", function(data){initialize(data, "images/marker_711.png" )}, filter);
 }
 
 
@@ -85,17 +109,24 @@ function initialize(petrol, markerImage)
 		//console.log(current["latitude"]);
 		if(distance(current["latitude"],current["longitude"]) < 10)
 		{
-			stations.push(new google.maps.LatLng(current["latitude"], current["longitude"]));			
+			stations.push({"location":new google.maps.LatLng(current["latitude"], current["longitude"]), "title":current["address"]});			
 		}
 	}	
-
 	google.maps.event.addListenerOnce(map, 'center_changed', function(){
 			pins = drop(stations, map, markerImage);
 			});
 	centerMap();	
-
 }
 
+function pinClicks(pins)
+{
+	for(var i = 0; i < pins.length; i++)
+	{
+		google.maps.event.addListener(markers[i], 'click', function(){
+			console.log(this.getTitle());
+			});
+	}
+}
 /*********************
  * Shiny Tab Clicking Panel Sliding...stuff.
  *******************/
