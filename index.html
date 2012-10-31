@@ -1,33 +1,35 @@
 <!doctype HTML>
 <html>
+<head>
 <meta charset='utf-8'>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script src="js/parse.js"></script> 
 <script src="js/utils.js"></script>
 <script src="js/maps.js"></script>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="style.css"></link>
+<link rel="stylesheet" href="style.css"/>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<title>Petrol Station Locator</title>
 </head>
 
 <body>   
 <div id="header">
 
-<img id="dvBanner"  src="images/banner_text.png" alt="Petrol Station Locator" border="0">
+<img id="dvBanner"  src="images/banner_text.png" alt="Petrol Station Locator">
 <div class="Heading" style="height:30px; margin-top:10px;">REFINE SEARCH</div>
 
 <div id="dvTabs">
-<div id="dvServicesTab" class="tab" data-show="dvServices" data-hide="dvDirections">Services</div>
-<div id="dvDirectionsTab" class="tab" data-show="dvDirections" data-hide="dvServices">Directions</div>
+<div id="dvServicesTab" class="tab" data-show="dvServices" data-hide="dvDirections" tabindex=1>Services</div>
+<div id="dvDirectionsTab" class="tab" data-show="dvDirections" data-hide="dvServices" tabindex=2>Directions</div>
 </div>
 
 <div id="dvFilters">
 	<div id="dvServices" class="hidden filterBox">
 		<div id="dvCompany" class="col group">
 			<h3>Company</h3>
-			<div class="FilterItem"><label>All</label><input type="checkbox" id="chkAllCompanies" name="chkAllCompanies" checked="true" /></div>
+			<div class="FilterItem"><label>All</label><input type="checkbox" id="chkAllCompanies" name="chkAllCompanies" checked="checked" /></div>
 			<div class="FilterItem"><label>Caltex</label><input type="checkbox" id="chkCaltex" name="chkCaltex" class="comp" /></div>
 			<div class="FilterItem"><label>BP</label><input type="checkbox" id="chkBP" name="chkAllBP" class="comp" /></div>
 			<div class="FilterItem"><label>Shell</label><input type="checkbox" id="chkShell" name="chkAllShell" class="comp" /></div>
@@ -38,7 +40,7 @@
 		<div id="dvFuelType" class="col group">
 			<h3>Fuel Type</h3>
             <div class="col">
-            	<div class="FilterItem"> <label>All</label><input type="checkbox" id="chkAllFuel" name="chkAllFuel" checked="true" /></div>
+            	<div class="FilterItem"> <label>All</label><input type="checkbox" id="chkAllFuel" name="chkAllFuel" checked="checked" /></div>
                 <div class="FilterItem"> <label>Regular UnLeaded</label><input type="checkbox" id="chkUnLeaded" class="fuel" name="chkUnLeaded" /></div>
                 <div class="FilterItem"> <label>91 Octane</label><input type="checkbox" id="chk91Oct" class="fuel" name="91 octane" /></div>
                 <div class="FilterItem"> <label>95 Octane</label><input type="checkbox" id="chk95Oct" class="fuel" name="95 octane" /></div>
@@ -57,7 +59,7 @@
 		<div id="dvStationServices" class="col group">
 			<h3>Services</h3>
 			<div class="col">
-            	<div class="FilterItem"> <label>All</label><input type="checkbox" id="chkAllService" name="chkAllService" checked="true" /></div>
+            	<div class="FilterItem"> <label>All</label><input type="checkbox" id="chkAllService" name="chkAllService" checked="checked" /></div>
             	<div class="FilterItem"> <label>EFTPOS</label><input type="checkbox" id="chkEFTPOS" name="EFTPOS" class="service" /></div>
                 <div class="FilterItem"> <label>ATM</label><input type="checkbox" id="chkATM" name="ATM"  class="service" /></div>
                 <div class="FilterItem"> <label>Workshop</label><input type="checkbox" id="chkWorkshop" name="Workshop"  class="service" /></div>	
@@ -73,7 +75,7 @@
 			</div>
 		</div>
 		<div style="clear:both"></div>
-		<div class="button" id="search">Search</div>
+		<div class="button" id="search" tabindex=100>Search</div>
 	</div>
 
 
