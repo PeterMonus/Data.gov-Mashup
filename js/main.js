@@ -11,9 +11,17 @@ $(document).ready(function() {
      * Even ones we might add later.
      ********************/
     $('.tab').each(function() {
-      $(this).click(function() {
+      $(this).click(function(e) {
         selectTab(this);
         });
+      $(this).keydown(function(e) { 
+        if(e.which == 13)
+        {
+          selectTab(this);
+        }
+        
+        }
+        )
       });
 
     /****************
