@@ -15,7 +15,7 @@ $(document).ready(function() {
         selectTab(this);
         });
       $(this).keydown(function(e) { 
-        if(e.which == 13)
+        if(e.which == 13 || e.which == 32)
         {
           selectTab(this);
         }

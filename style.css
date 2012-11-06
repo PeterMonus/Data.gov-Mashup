@@ -133,3 +133,9 @@ button#search {
 	color:#999; 
 	border:1px solid #999;
 }
+
+.inBox{
+	width:200px;
+	margin-top:20px; 
+	padding-left:10px;
+}
