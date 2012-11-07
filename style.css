@@ -81,7 +81,6 @@ input{margin-right: 20px;}
 	margin-right: 20px;
 	font-size: 15px;
 	z-index:500;
-	transition: all 0.8s ease 0;
 }
 
 .Selected{
@@ -89,7 +88,6 @@ input{margin-right: 20px;}
 	background: -webkit-linear-gradient(#a0a0a0, #DCDCDC);
 	background: linear-gradient(#a0a0a0, #DCDCDC);
 	z-index:999;
-transition: all 0.8s ease 0;
 }
 .tab:hover{cursor:pointer;}		  
 #dvFilters{clear:left;}
@@ -106,21 +104,19 @@ transition: all 0.8s ease 0;
 }
 .hidden{display:none;}
 
-button{
-	height: 50px; 
-	width: 150px;  
+.button{
+	height: 20px; 
+	width: 50px;  
 	background: filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2BA64', endColorstr='#CCD46D'); 
 	background: -webkit-linear-gradient(#B2BA64,#CCD46D);
 	background: linear-gradient(#B2BA64,#CCD46D);
 	padding:10px; 
 	border-radius:5px; 
 	cursor:pointer;
-	       font-size:16px;
-	 margin:0 auto;
 }
 
-button#search {
-	margin-left:calc(50% - 80px);
+.button#search {
+	margin:0 auto; 
 	margin-top:30px;
 }
 
@@ -132,10 +128,4 @@ button#search {
 	border-radius: 5px; 
 	color:#999; 
 	border:1px solid #999;
-}
-
-.inBox{
-	width:200px;
-	margin-top:20px; 
-	padding-left:10px;
 }
