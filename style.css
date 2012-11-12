@@ -119,7 +119,12 @@ button{
 	 margin:0 auto;
 }
 
-button#search {
+button#servicesSearch {
+	margin-left:calc(50% - 80px);
+	margin-top:30px;
+}
+
+button#directionsSearch {
 	margin-left:calc(50% - 80px);
 	margin-top:30px;
 }

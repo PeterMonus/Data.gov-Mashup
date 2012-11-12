@@ -2,8 +2,11 @@ var userLoc = {};
 var pins;
 var map;
 
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();	
+
 $(document).ready(function() {	
-    navigator.geolocation.getCurrentPosition(initLoc); //Initialise GeoLocation
+    navigator.geolocation.getCurrentPosition(initLoc); //Initialise GeoLocation	
     map = initMap();//Load the map now. We'll move it later.
 
     /********************
@@ -27,9 +30,15 @@ $(document).ready(function() {
     /****************
      * Initialise search button click
      ***************/
-    $('#search').click(function() {
-      clickSearch();
-      });
+	$('#servicesSearch').click(function() {
+		clickSearch();
+		$('#dvServicesTab').click();
+	});
+	  
+	$('#directionsSearch').click(function() {
+		clickSearch();
+		$('#dvDirectionsTab').click();
+	});
 
     $('.comp').each(
         function() {
@@ -117,25 +126,72 @@ function initCSV()
  *************************/
 function initialize(petrol, markerImage) 
 {
-
-  var stations = [];
-  for (var i = 0; i < petrol.length; i++)
-  {
-    current = petrol[i];
-    //console.log(current['latitude']);
-    if (distance(current['latitude'], current['longitude']) < 10)
-    {
-      stations.push({
-          'location': new google.maps.LatLng(current['latitude'],
-            current['longitude']),
-          'title': current['address']
-          });
+    var stations = [];
+    var IsDirectionSearch = false;
+    if (document.getElementById("txtSearchFrom").value.toString().replace(' ', '') != '' && document.getElementById("txtSearchTo").value.toString().replace(' ', '') != '') {
+        IsDirectionSearch = true;
     }
-  }
-  google.maps.event.addListenerOnce(map, 'center_changed', function() {
-      pins = drop(stations, map, markerImage);
-      });
-  centerMap();
+
+
+    if (IsDirectionSearch == false) {
+        for (var i = 0; i < petrol.length; i++) {
+            current = petrol[i];
+            //console.log(current['latitude']);
+            if (distance(current['latitude'], current['longitude']) < 10) {
+                stations.push({
+                    'location': new google.maps.LatLng(current['latitude'],
+						current['longitude']),
+                    'title': current['address']
+                });
+            }
+        }
+        google.maps.event.addListenerOnce(map, 'center_changed', function () {
+            pins = drop(stations, map, markerImage);
+        });
+        centerMap();
+    }
+
+    if (IsDirectionSearch == true) {
+		
+        var request =
+	  	{
+	  		origin: document.getElementById("txtSearchFrom").value + " Australia",
+	  		destination: document.getElementById("txtSearchTo").value + " Australia",
+	  	    travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+		
+        directionsDisplay.setMap(map);
+		directionsDisplay.setPanel(null);
+		
+        directionsService.route(request, function (result, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(result);
+				for (var step = 0; step < result.routes[0].overview_path.length; step = step + 5) 
+				{
+					for (var i = 0; i < petrol.length; i++) 
+					{
+						current = petrol[i];
+						if (DistanceBetweenTwoPoints(result.routes[0].overview_path[step].Ya, result.routes[0].overview_path[step].Za, current['latitude'], current['longitude']) < 4) {
+	
+							stations.push({
+								'location': new google.maps.LatLng(current['latitude'],
+							current['longitude']),
+								'title': current['address']                            
+							});
+						}
+					}
+					google.maps.event.addListenerOnce(map, 'center_changed', function () {
+						pins = drop(stations, map, markerImage);
+					});
+					centerMap();
+				}
+			}
+			else
+			{
+				console.log("DIRECTIONS FAILED");
+			}
+        });
+    }
 }
 
 function pinClicks(pins)
@@ -176,5 +232,4 @@ function clickSearch()
     clearPins(pins);
     initCSV();
   }
-  $('#dvServicesTab').click();
 }

@@ -31,8 +31,7 @@ title: (stations[i])['title'],
 map: map,
 draggable: false,
 clickable: true,
-icon: image,
-animation: google.maps.Animation.DROP
+icon: image
 }));
 
 }
