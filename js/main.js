@@ -162,17 +162,17 @@ function initialize(petrol, markerImage)
         };
 		
         directionsDisplay.setMap(map);
-		directionsDisplay.setPanel(null);
+	directionsDisplay.setPanel(null);
 		
         directionsService.route(request, function (result, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
 				directionsDisplay.setDirections(result);
-				for (var step = 0; step < result.routes[0].overview_path.length; step = step + 5) 
+				for (var step = 0; step < result.routes[0].overview_path.length; step = step + 8) 
 				{
 					for (var i = 0; i < petrol.length; i++) 
 					{
 						current = petrol[i];
-						if (DistanceBetweenTwoPoints(result.routes[0].overview_path[step].Ya, result.routes[0].overview_path[step].Za, current['latitude'], current['longitude']) < 4) {
+						if (DistanceBetweenTwoPoints(result.routes[0].overview_path[step].Ya, result.routes[0].overview_path[step].Za, current['latitude'], current['longitude']) < 20) {
 	
 							stations.push({
 								'location': new google.maps.LatLng(current['latitude'],
