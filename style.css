@@ -135,12 +135,12 @@ button#directionsSearch {
 	padding-left: 5px; 
 	width: 250px; 
 	border-radius: 5px; 
-	color:#999; 
+	color:#333; 
 	border:1px solid #999;
 }
 
 .inBox{
-	width:200px;
+	width:400px;
 	margin-top:20px; 
 	padding-left:10px;
 }

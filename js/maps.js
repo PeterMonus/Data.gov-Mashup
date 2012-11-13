@@ -14,7 +14,7 @@ center: new google.maps.LatLng(-35.237, 149.085),
 }
 function centerMap()
 {
-  map.setCenter(new google.maps.LatLng(userLoc['lat'], userLoc['long']));
+  map.panTo(new google.maps.LatLng(userLoc['lat'], userLoc['long']));
 
 }
 
@@ -29,6 +29,7 @@ function drop(stations, map, image) {
 position: (stations[i])['location'],
 title: (stations[i])['title'],
 map: map,
+animation: drop,
 draggable: false,
 clickable: true,
 icon: image

@@ -128,7 +128,8 @@ function initialize(petrol, markerImage)
 {
     var stations = [];
     var IsDirectionSearch = false;
-    if (document.getElementById("txtSearchFrom").value.toString().replace(' ', '') != '' && document.getElementById("txtSearchTo").value.toString().replace(' ', '') != '') {
+    console.log($("#txtSearchFrom").val());
+    if (($("#txtSearchFrom").val()).length > 0 && ($("#txtSearchTo").val().length > 0)) {
         IsDirectionSearch = true;
     }
 
@@ -223,7 +224,6 @@ function selectTab(elem)
 
 /********************
  * Search button click.
- * TODO: Add actual search logic
  ********************/
 function clickSearch()
 {
