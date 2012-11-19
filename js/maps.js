@@ -15,7 +15,15 @@ center: new google.maps.LatLng(-35.237, 149.085),
 function centerMap()
 {
   map.panTo(new google.maps.LatLng(userLoc['lat'], userLoc['long']));
-
+  new google.maps.Marker({
+position: (new google.maps.LatLng(userLoc['lat'], userLoc['long'])),
+map:map,
+animation:drop,
+draggable: false,
+clickable: true,
+title: 'You Are Here',
+icon: 'images/marker_user.png'
+});
 }
 
 

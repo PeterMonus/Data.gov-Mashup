@@ -105,7 +105,6 @@ function initCSV()
         }
         });
   }
-  console.log(filter);
   if (all || caltex) parse.csv('csv/caltex.csv',
       function(data) {initialize(data, 'images/marker_caltex.png')},
       filter);
