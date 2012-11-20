@@ -28,7 +28,8 @@ function distance(lat2, lon2)
 
 /**************************
  * Calculates how far one point is from another
- * Source: http://www.360doc.com/content/10/0906/20/1344893_51690957.shtml
+ * Same source as above, but taking two lat/long pairs,
+ * rather then loading in from the "user" object
  **************************/
 function DistanceBetweenTwoPoints(lat1, lon1, lat2, lon2) {
     if (typeof (Number.prototype.toRad) === "undefined") {
