@@ -74,6 +74,9 @@ function initLoc(position) {
   initCSV();
 }
 
+/**************************
+ * Loads in all the CSV files of companies that are checked
+ **************************/
 function initCSV()
 {
   var all = $('#chkAllCompanies').is(':checked');
@@ -133,10 +136,14 @@ function initialize(petrol, markerImage)
     }
 
 
+	/**************************
+	 * If not doing a directions search:
+	 * This will add to the map all the petrol stations within 10 kilometres
+	 **************************/
+
     if (IsDirectionSearch == false) {
         for (var i = 0; i < petrol.length; i++) {
             current = petrol[i];
-            //console.log(current['latitude']);
             if (distance(current['latitude'], current['longitude']) < 10) {
                 stations.push({
                     'location': new google.maps.LatLng(current['latitude'],
@@ -151,6 +158,12 @@ function initialize(petrol, markerImage)
         centerMap();
     }
 
+	/**************************
+	 * If doing a directions search:
+	 * Will pass to the google maps api an origin and a destination which will return a path
+	 * and an array of coordinates along that path.
+	 * The function will add markers for fuel stations within a certain distance of each point.
+	 **************************/
     if (IsDirectionSearch == true) {
 		
         var request =
@@ -161,7 +174,7 @@ function initialize(petrol, markerImage)
         };
 		
         directionsDisplay.setMap(map);
-	directionsDisplay.setPanel(null);
+		directionsDisplay.setPanel(null);
 		
         directionsService.route(request, function (result, status) {
 			if (status == google.maps.DirectionsStatus.OK) {
@@ -194,6 +207,10 @@ function initialize(petrol, markerImage)
     }
 }
 
+/**************************
+ * Listener for clicking on map markers
+ * Show address when clicked
+ **************************/
 function pinClicks(pins)
 {
   for (var i = 0; i < pins.length; i++)
