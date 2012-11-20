@@ -63,6 +63,51 @@ $(document).ready(function() {
         });
 
 
+    $('.fuel').each(
+        function() {
+        $(this).click(
+          function() {
+          if (!($(this).is('#chkAllFuel')) && $('#chkAllFuel').is(':checked'))
+          {
+          $('#chkAllFuel').prop('checked', '');
+          }
+          });
+        });
+
+    $('#chkAllFuel').click(
+        function() {
+        if (!($(this).is(':checked')))
+        {
+        $('.fuel').each(function() {$(this).prop('checked', 'on');});
+        } else {
+
+        $('.fuel').each(function() {$(this).prop('checked', '');});
+        }
+        });
+
+
+    $('.service').each(
+        function() {
+        $(this).click(
+          function() {
+          if (!($(this).is('#chkAllService')) && $('#chkAllService').is(':checked'))
+          {
+          $('#chkAllService').prop('checked', '');
+          }
+          });
+        });
+
+    $('#chkAllService').click(
+        function() {
+        if (!($(this).is(':checked')))
+        {
+        $('.service').each(function() {$(this).prop('checked', 'on');});
+        } else {
+
+        $('.service').each(function() {$(this).prop('checked', '');});
+        }
+        });
+
 });
 
 /**************************
